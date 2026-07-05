@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlowBrew · Find someone worth slowing down for</title>
+<meta name="description" content="SlowBrew is an AI-powered relationship app that understands who you are, then introduces you to people you're actually compatible with. No endless swiping.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#F8F4E9;
+  --bg-2:#EFE8D6;
+  --white:#FFFFFF;
+  --plum:#502D55;
+  --plum-deep:#2D1545;
+  --plum-night:#1E0D2E;
+  --mauve:#8E4A6E;
+  --rose:#C47BA4;
+  --peach:#F6DBC0;
+  --cream:#FAF4EC;
+  --ink:#1A0F28;
+  --soft:#5A4660;
+  --dim:rgba(90,70,96,0.55);
+  --hairline:rgba(80,45,85,0.13);
+  --green:#3A7A58;
+  --green-soft:rgba(58,122,88,0.12);
+  --max:1120px;
+  --ease-spring:cubic-bezier(.34,1.4,.64,1);
+  --ease-out:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.015em}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;font-family:inherit}
+::selection{background:var(--rose);color:var(--cream)}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+.display{font-family:'Fraunces',serif;font-style:italic;font-weight:700;color:var(--ink)}
+.display em{font-style:normal;color:var(--plum)}
+.eyebrow{
+  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:0.13em;text-transform:uppercase;color:var(--mauve);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.eyebrow::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--plum);flex-shrink:0}
+.orb{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+
+/* ============ BUTTONS ============ */
+.btn{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:9px;
+  border-radius:99px;font-weight:700;font-size:15.5px;
+  padding:16px 32px;
+  transition:transform .18s var(--ease-spring),box-shadow .18s var(--ease-out);
+  transform:translateZ(0);
+}
+.btn-plum{background:var(--plum);color:var(--cream);box-shadow:0 5px 0 var(--plum-deep),0 12px 28px rgba(80,45,85,0.22)}
+.btn-plum:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--plum-deep),0 18px 36px rgba(80,45,85,0.26)}
+.btn-plum:active{transform:translateY(3px) scale(.985);box-shadow:0 1px 0 var(--plum-deep),0 4px 12px rgba(80,45,85,0.2)}
+.btn-peach{background:var(--peach);color:var(--ink);box-shadow:0 5px 0 rgba(139,74,110,0.45),0 12px 28px rgba(0,0,0,0.18)}
+.btn-peach:hover{transform:translateY(-2px)}
+.btn-peach:active{transform:translateY(3px) scale(.985);box-shadow:0 1px 0 rgba(139,74,110,0.45)}
+.btn .arrow{display:inline-block;transition:transform .25s var(--ease-spring)}
+.btn:hover .arrow{transform:translateX(4px)}
+/* click ripple */
+.ripple{
+  position:absolute;border-radius:50%;pointer-events:none;
+  background:rgba(255,255,255,0.35);
+  transform:scale(0);animation:rip .55s ease-out forwards;
+}
+@keyframes rip{to{transform:scale(3.2);opacity:0}}
+
+/* ============ NAV ============ */
+nav{
+  position:sticky;top:0;z-index:300;
+  background:rgba(248,244,233,0.88);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--hairline);
+}
+.scroll-progress{
+  position:absolute;bottom:-1px;left:0;height:2px;width:0%;
+  background:linear-gradient(90deg,var(--mauve),var(--rose));
+  transition:width .1s linear;
+}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:15px 32px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:21px;color:var(--ink)}
+.nav-logo svg{width:25px;height:25px;flex-shrink:0;transition:transform .4s var(--ease-spring)}
+.nav-logo:hover svg{transform:rotate(-8deg) scale(1.08)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--soft);position:relative;transition:color .15s}
+.nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--plum);transition:width .25s var(--ease-out)}
+.nav-links a:hover{color:var(--plum)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--plum);color:var(--cream);font-weight:600;font-size:14px;border-radius:99px;padding:10px 22px;box-shadow:0 4px 0 var(--plum-deep);transition:transform .15s var(--ease-spring),box-shadow .15s;position:relative;overflow:hidden}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 0 var(--plum-deep)}
+.nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 var(--plum-deep)}
+
+/* ============ HERO ============ */
+.hero{padding:88px 0 96px;position:relative;overflow:hidden}
+.hero-orb1{top:-180px;left:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(142,74,110,0.11) 0%,transparent 68%)}
+.hero-orb2{top:80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(80,45,85,0.08) 0%,transparent 70%)}
+.hero-inner{display:grid;grid-template-columns:1.1fr 400px;gap:56px;align-items:center;position:relative;z-index:2}
+.hero-left .display{font-size:clamp(38px,5vw,60px);margin-top:16px}
+.hero-sub{font-size:17.5px;color:var(--soft);line-height:1.7;margin-top:20px;max-width:520px}
+.hero-nots{margin-top:22px;display:flex;flex-direction:column;gap:8px}
+.hero-not{
+  display:flex;align-items:center;gap:10px;font-size:15px;color:var(--soft);font-weight:500;
+  opacity:0;transform:translateX(-12px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
+}
+.hero-not.in{opacity:1;transform:translateX(0)}
+.hero-not .x{
+  width:20px;height:20px;border-radius:50%;flex-shrink:0;
+  background:rgba(196,123,164,0.15);color:var(--mauve);
+  display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;
+}
+.hero-just{
+  margin-top:18px;font-size:16px;color:var(--ink);font-weight:500;max-width:500px;line-height:1.65;
+  padding-left:16px;border-left:3px solid var(--rose);
+}
+.hero-actions{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-fine{font-size:13.5px;color:var(--dim)}
+
+/* phone mockup */
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(58,122,88,0.14) 0%,transparent 70%);pointer-events:none}
+.phone-frame{
+  width:262px;background:#130820;border-radius:38px;overflow:hidden;position:relative;z-index:1;
+  box-shadow:0 0 0 1.5px rgba(246,219,192,0.12),0 30px 70px rgba(80,45,85,0.32),0 0 44px rgba(58,122,88,0.1);
+  transform:rotate(2deg);
+  transition:transform .6s var(--ease-spring);
+}
+.phone-frame:hover{transform:rotate(0deg) translateY(-6px)}
+.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:88px;height:22px;background:#130820;border-radius:99px;z-index:10}
+.phone-status{display:flex;justify-content:space-between;padding:38px 16px 6px;font-size:9.5px;font-weight:600;color:rgba(250,244,236,0.4);font-family:'Space Mono',monospace}
+.phone-header{padding:6px 16px 12px}
+.phone-eyebrow{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C47BA4;display:flex;align-items:center;gap:5px}
+.phone-eyebrow::before{content:"";width:4px;height:4px;border-radius:50%;background:#F6DBC0}
+.phone-headline{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:22px;color:#FAF4EC;margin-top:4px;line-height:1.1}
+.phone-sub{font-size:11px;color:rgba(250,244,236,0.4);margin-top:4px}
+.phone-matches{padding:4px 12px 20px;display:flex;flex-direction:column;gap:7px}
+.pm-card{
+  background:rgba(255,255,255,0.045);border:1.5px solid rgba(246,219,192,0.09);
+  border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:9px;
+  position:relative;overflow:hidden;opacity:0;transform:translateY(8px);animation:pmr .4s forwards;
+}
+@keyframes pmr{to{opacity:1;transform:translateY(0)}}
+.pm-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#3A7A58,rgba(58,122,88,0.3))}
+.pm-av{width:36px;height:36px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(58,122,88,0.1);border:1px solid rgba(58,122,88,0.22)}
+.pm-name{font-weight:700;font-size:12px;color:#FAF4EC}
+.pm-flag{font-size:9.5px;color:#7AC9A1;margin-top:2px;font-weight:500}
+.pm-pct{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7AC9A1;flex-shrink:0;margin-left:auto}
+
+/* ============ PROBLEM ============ */
+.problem{padding:104px 0;background:var(--bg-2);position:relative;overflow:hidden}
+.problem-orb{top:-100px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(142,74,110,0.07) 0%,transparent 70%)}
+.problem-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;position:relative;z-index:2}
+.problem-left .display{font-size:clamp(28px,3.6vw,42px);margin-top:14px}
+.problem-left>p{color:var(--soft);font-size:16.5px;margin-top:18px;max-width:420px;line-height:1.7}
+.fizzle{display:flex;flex-direction:column;gap:0;padding-top:8px}
+.fizzle-line{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:600;
+  font-size:clamp(20px,2.4vw,27px);color:var(--ink);
+  padding:18px 0;border-bottom:1px solid var(--hairline);
+  display:flex;align-items:baseline;gap:14px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);
+}
+.fizzle-line.in{opacity:1;transform:translateY(0)}
+.fizzle-num{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;font-weight:700;color:var(--rose);letter-spacing:0.06em;flex-shrink:0}
+.fizzle-final{
+  padding:22px 0 0;font-family:'Inter',sans-serif;font-style:normal;font-weight:600;
+  font-size:16.5px;color:var(--mauve);border-bottom:none;
+}
+
+/* ============ SHIFT ============ */
+.shift{padding:104px 0;position:relative;overflow:hidden}
+.shift-inner{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.shift .display{font-size:clamp(30px,4.2vw,50px);margin-top:16px}
+.shift-body{color:var(--soft);font-size:17px;line-height:1.75;margin-top:24px;max-width:640px;margin-left:auto;margin-right:auto}
+.shift-body strong{color:var(--ink);font-weight:600}
+.shift-kicker{
+  margin-top:34px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;
+  font-size:clamp(19px,2.2vw,24px);color:var(--plum);
+}
+
+/* ============ HOW IT WORKS ============ */
+.how{padding:104px 0;background:var(--white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.how-head{max-width:600px;margin-bottom:64px}
+.how-head .display{font-size:clamp(28px,3.6vw,44px);margin-top:14px}
+.how-steps{display:flex;flex-direction:column;gap:0}
+.how-step{
+  display:grid;grid-template-columns:120px 1fr 1fr;gap:40px;align-items:start;
+  padding:44px 0;border-top:1px solid var(--hairline);
+  transition:background .3s;
+}
+.how-step:last-child{border-bottom:1px solid var(--hairline)}
+.hs-num{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
+  font-size:56px;color:var(--rose);line-height:.9;
+  transition:transform .4s var(--ease-spring),color .3s;
+}
+.how-step:hover .hs-num{transform:scale(1.12) rotate(-4deg);color:var(--mauve)}
+.hs-title{font-size:21px;font-weight:700;color:var(--ink);line-height:1.3;font-family:'Fraunces',serif;font-style:italic}
+.hs-body{font-size:15.5px;color:var(--soft);line-height:1.7}
+.hs-body .lead{color:var(--ink);font-weight:600;display:block;margin-bottom:6px}
+.hs-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.hs-tag{
+  font-size:12px;font-weight:600;padding:6px 12px;border-radius:99px;
+  background:var(--bg);border:1px solid var(--hairline);color:var(--soft);
+  transition:transform .2s var(--ease-spring),background .2s,color .2s,border-color .2s;
+}
+.hs-tag:hover{transform:translateY(-2px);background:var(--plum);color:var(--cream);border-color:var(--plum)}
+.hs-tag.green{background:var(--green-soft);border-color:rgba(58,122,88,0.25);color:var(--green)}
+.hs-tag.green:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
+
+/* ============ MUTUAL FRIEND (WHY) ============ */
+.why{padding:112px 0;background:var(--plum-night);position:relative;overflow:hidden;color:var(--cream)}
+.why-orb1{top:-140px;left:-100px;width:480px;height:480px;background:radial-gradient(circle,rgba(142,74,110,0.24) 0%,transparent 68%)}
+.why-orb2{bottom:-120px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(58,122,88,0.1) 0%,transparent 70%)}
+.why-inner{max-width:780px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.why .eyebrow{color:var(--rose)}
+.why .eyebrow::before{background:var(--peach)}
+.why .display{color:var(--cream);font-size:clamp(28px,3.8vw,46px);margin-top:16px}
+.why-quote{
+  margin:40px auto 0;max-width:480px;
+  background:rgba(250,244,236,0.05);
+  border:1px solid rgba(246,219,192,0.14);
+  border-radius:20px;padding:28px 32px;
+  position:relative;
+  transition:transform .4s var(--ease-spring),border-color .3s;
+}
+.why-quote:hover{transform:translateY(-4px) rotate(-0.5deg);border-color:rgba(246,219,192,0.3)}
+.why-quote::before{
+  content:"\\201C";
+  position:absolute;top:-24px;left:24px;
+  font-family:'Fraunces',serif;font-size:80px;color:var(--rose);line-height:1;
+}
+.why-quote p{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(20px,2.4vw,26px);color:var(--cream);line-height:1.4}
+.why-quote span{display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,244,236,0.4)}
+.why-body{color:rgba(250,244,236,0.62);font-size:16.5px;line-height:1.75;margin:36px auto 0;max-width:560px}
+.why-tagline{
+  margin-top:34px;display:inline-flex;align-items:center;gap:14px;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(19px,2.4vw,25px);
+}
+.why-tagline .less{color:rgba(250,244,236,0.4);text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:2px}
+.why-tagline .more{color:var(--peach)}
+
+/* ============ DIFFERENT (bento) ============ */
+.diff{padding:104px 0}
+.diff-head{max-width:600px;margin-bottom:56px}
+.diff-head .display{font-size:clamp(28px,3.6vw,44px);margin-top:14px}
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.bento-card{
+  background:var(--white);border:1px solid var(--hairline);border-radius:22px;padding:30px;
+  transition:transform .35s var(--ease-spring),box-shadow .35s var(--ease-out),border-color .3s;
+  position:relative;overflow:hidden;
+}
+.bento-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(80,45,85,0.12);border-color:rgba(80,45,85,0.25)}
+.bento-card::after{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--mauve),var(--rose));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out);
+}
+.bento-card:hover::after{transform:scaleX(1)}
+.bc-1{grid-column:span 3}
+.bc-2{grid-column:span 3}
+.bc-3{grid-column:span 2}
+.bc-4{grid-column:span 2}
+.bc-5{grid-column:span 2}
+.bento-icon{font-size:28px;display:block;margin-bottom:14px}
+.bento-card h3{font-size:19px;font-weight:700;font-family:'Fraunces',serif;font-style:italic;color:var(--ink)}
+.bento-card p{font-size:14.5px;color:var(--soft);margin-top:9px;line-height:1.65}
+
+/* ============ FOR / NOT FOR ============ */
+.fit{padding:104px 0;background:var(--bg-2);border-top:1px solid var(--hairline)}
+.fit-head{text-align:center;max-width:560px;margin:0 auto 56px}
+.fit-head .display{font-size:clamp(28px,3.6vw,42px);margin-top:14px}
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto}
+.fit-col{border-radius:24px;padding:36px;position:relative;overflow:hidden}
+.fit-col.yes{background:var(--white);border:1.5px solid rgba(58,122,88,0.25)}
+.fit-col.no{background:rgba(255,255,255,0.5);border:1.5px solid var(--hairline)}
+.fit-col-head{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:22px;margin-bottom:22px}
+.fit-col.yes .fit-col-head{color:var(--green)}
+.fit-col.no .fit-col-head{color:var(--dim)}
+.fit-item{
+  display:flex;gap:12px;align-items:flex-start;padding:11px 0;font-size:15px;line-height:1.55;
+  opacity:0;transform:translateX(-10px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
+}
+.fit-item.in{opacity:1;transform:translateX(0)}
+.fit-col.yes .fit-item{color:var(--ink)}
+.fit-col.no .fit-item{color:var(--dim)}
+.fit-mark{
+  width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
+  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
+}
+.fit-col.yes .fit-mark{background:var(--green-soft);color:var(--green)}
+.fit-col.no .fit-mark{background:rgba(90,70,96,0.08);color:var(--dim)}
+.fit-note{text-align:center;margin-top:36px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(17px,2vw,21px);color:var(--plum)}
+
+/* ============ SAFETY ============ */
+.safety{padding:104px 0}
+.safety-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.safety-left .display{font-size:clamp(26px,3.4vw,40px);margin-top:14px}
+.safety-left p{color:var(--soft);font-size:16px;line-height:1.75;margin-top:18px;max-width:440px}
+.safety-left .kicker{margin-top:18px;color:var(--ink);font-weight:600;font-size:16px}
+.verify-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.verify-card{
+  background:var(--white);border:1px solid var(--hairline);border-radius:18px;padding:24px 22px;
+  display:flex;flex-direction:column;gap:10px;
+  transition:transform .3s var(--ease-spring),box-shadow .3s,border-color .3s;
+}
+.verify-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(80,45,85,0.1);border-color:rgba(58,122,88,0.35)}
+.verify-ico{
+  width:40px;height:40px;border-radius:12px;background:var(--green-soft);
+  display:flex;align-items:center;justify-content:center;font-size:19px;
+}
+.verify-card h4{margin:0;font-size:15.5px;font-weight:700;color:var(--ink)}
+.verify-card p{font-size:13px;color:var(--soft);line-height:1.55}
+.verify-badge{
+  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;
+  text-transform:uppercase;color:var(--green);background:var(--green-soft);
+  padding:3px 8px;border-radius:99px;align-self:flex-start;
+}
+
+/* ============ FOUNDER ============ */
+.founder{padding:104px 0;background:var(--bg-2);border-top:1px solid var(--hairline);position:relative;overflow:hidden}
+.founder-orb{top:-80px;left:-100px;width:380px;height:380px;background:radial-gradient(circle,rgba(196,123,164,0.08) 0%,transparent 70%)}
+.founder-card{
+  max-width:680px;margin:0 auto;background:var(--white);
+  border:1px solid var(--hairline);border-radius:26px;padding:56px 60px;
+  position:relative;z-index:2;
+  box-shadow:0 24px 60px rgba(80,45,85,0.1);
+  transform:rotate(-0.4deg);
+  transition:transform .5s var(--ease-spring);
+}
+.founder-card:hover{transform:rotate(0deg)}
+.founder-card .eyebrow{margin-bottom:18px}
+.founder-card h2{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:clamp(24px,3vw,32px);color:var(--ink)}
+.founder-card p{color:var(--soft);font-size:16px;line-height:1.8;margin-top:18px}
+.founder-list{margin:20px 0 0;padding:0;list-style:none}
+.founder-list li{
+  font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:17.5px;color:var(--ink);
+  padding:9px 0 9px 22px;position:relative;
+}
+.founder-list li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:2px;background:var(--rose)}
+.founder-sig{
+  margin-top:30px;padding-top:26px;border-top:1px solid var(--hairline);
+  display:flex;align-items:center;gap:14px;
+}
+.sig-mark{
+  width:44px;height:44px;border-radius:50%;flex-shrink:0;
+  background:var(--plum);color:var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:20px;
+}
+.sig-name{font-weight:700;font-size:15px;color:var(--ink)}
+.sig-role{font-size:13px;color:var(--dim)}
+
+/* ============ FINAL CTA ============ */
+.final{padding:112px 0 120px}
+.final-inner{
+  background:var(--plum-night);border-radius:32px;padding:88px 64px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.final-orb1{top:-140px;left:50%;transform:translateX(-50%);width:620px;height:440px;background:radial-gradient(ellipse,rgba(142,74,110,0.35) 0%,transparent 65%)}
+.final-orb2{bottom:-100px;right:-70px;width:340px;height:340px;background:radial-gradient(circle,rgba(58,122,88,0.13) 0%,transparent 70%)}
+.final-inner>*{position:relative;z-index:2}
+.final .eyebrow{color:var(--rose);justify-content:center}
+.final .eyebrow::before{background:var(--peach)}
+.final .display{color:var(--cream);font-size:clamp(32px,4.8vw,58px);margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto}
+.final-sub{color:rgba(250,244,236,0.6);margin-top:18px;font-size:17px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+.waitlist{display:flex;gap:10px;justify-content:center;margin-top:34px;flex-wrap:wrap;max-width:500px;margin-left:auto;margin-right:auto}
+.wl-input{
+  flex:1;min-width:230px;padding:15px 22px;border-radius:99px;
+  border:1.5px solid rgba(246,219,192,0.2);
+  background:rgba(250,244,236,0.06);
+  font-family:'Inter',sans-serif;font-size:15px;color:var(--cream);
+  outline:none;transition:border-color .2s,background .2s;
+}
+.wl-input::placeholder{color:rgba(250,244,236,0.34)}
+.wl-input:focus{border-color:rgba(246,219,192,0.55);background:rgba(250,244,236,0.09)}
+.final-fine{font-size:13px;color:rgba(250,244,236,0.32);margin-top:14px}
+.confirm{
+  display:none;background:rgba(58,122,88,0.2);border:1px solid rgba(58,122,88,0.45);
+  border-radius:16px;padding:16px 22px;color:#7AC9A1;font-size:15px;font-weight:600;
+  margin:18px auto 0;max-width:400px;
+  animation:confirmIn .5s var(--ease-spring);
+}
+@keyframes confirmIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+
+/* ============ FOOTER ============ */
+footer{padding:0 0 64px}
+.footer-inner{border-top:1px solid var(--hairline);padding-top:36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:19px;color:var(--ink)}
+.footer-logo svg{width:22px;height:22px}
+.footer-copy{font-size:14px;color:var(--dim);margin-top:6px}
+.footer-links{display:flex;gap:22px;font-size:14px;font-weight:500}
+.footer-links a{color:var(--soft);transition:color .15s,transform .2s;display:inline-block}
+.footer-links a:hover{color:var(--plum);transform:translateY(-2px)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:52px}
+  .phone-wrap{order:1;margin-top:8px}
+  .problem-inner,.safety-inner{grid-template-columns:1fr;gap:44px}
+  .how-step{grid-template-columns:70px 1fr;gap:20px}
+  .how-step .hs-body{grid-column:2}
+  .bento{grid-template-columns:1fr 1fr}
+  .bc-1,.bc-2,.bc-3,.bc-4,.bc-5{grid-column:span 1}
+  .fit-grid{grid-template-columns:1fr}
+  .final-inner{padding:64px 32px}
+  .founder-card{padding:40px 32px}
+}
+@media(max-width:640px){
+  .wrap{padding:0 20px}
+  body{font-size:15px}
+
+  /* nav */
+  .nav-inner{padding:12px 20px}
+  .nav-links{display:none}
+  .nav-logo{font-size:18px}
+  .nav-cta{padding:9px 16px;font-size:13px}
+
+  /* hero */
+  .hero{padding:48px 0 64px}
+  .hero-left .display{font-size:clamp(32px,9vw,40px)}
+  .hero-sub{font-size:15.5px}
+  .hero-just{font-size:15px}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:12px}
+  .hero-actions .btn{justify-content:center;width:100%}
+  .hero-fine{text-align:center}
+  .phone-frame{width:min(262px,78vw);transform:rotate(0deg)}
+
+  /* section rhythm */
+  .problem,.shift,.how,.why,.diff,.fit,.safety,.founder{padding:68px 0}
+  .final{padding:68px 0 76px}
+
+  /* problem */
+  .fizzle-line{font-size:18px;padding:15px 0;gap:10px}
+  .fizzle-final{font-size:15px}
+
+  /* how it works: stack fully, number inline with title */
+  .how-head{margin-bottom:40px}
+  .how-step{grid-template-columns:1fr;gap:12px;padding:32px 0}
+  .how-step .hs-body{grid-column:1}
+  .hs-num{font-size:34px;line-height:1}
+  .hs-title{font-size:19px}
+  .hs-tags{margin-top:12px}
+  .hs-tag{padding:7px 13px;font-size:12.5px}
+
+  /* why */
+  .why-quote{padding:24px 22px;margin-top:34px}
+  .why-quote::before{font-size:60px;top:-18px;left:16px}
+  .why-tagline{flex-direction:column;gap:6px;align-items:center}
+  .why-body{font-size:15.5px}
+
+  /* bento + fit + verify */
+  .bento{grid-template-columns:1fr;gap:14px}
+  .bento-card{padding:26px 24px}
+  .fit-col{padding:28px 24px}
+  .fit-item{padding:12px 0}
+  .verify-grid{grid-template-columns:1fr;gap:12px}
+
+  /* founder */
+  .founder-card{padding:34px 24px;transform:none}
+  .founder-card h2{font-size:23px}
+  .founder-card p{font-size:15px}
+  .founder-list li{font-size:16px}
+
+  /* final cta */
+  .final-inner{padding:56px 22px;border-radius:24px}
+  .final .display{font-size:clamp(28px,8.5vw,38px)}
+  .final-sub{font-size:15.5px}
+  .waitlist{flex-direction:column;gap:10px}
+  .wl-input{min-width:0;width:100%;text-align:center;padding:15px 18px}
+  .waitlist .btn{width:100%;justify-content:center}
+
+  /* footer */
+  .footer-inner{flex-direction:column;align-items:flex-start;gap:20px}
+
+  /* comfortable tap targets everywhere */
+  .btn,.nav-cta,.footer-links a{min-height:44px}
+  .footer-links{gap:26px}
+  .footer-links a{display:inline-flex;align-items:center}
+
+  /* disable parallax on small screens, it fights with touch scrolling */
+  [data-parallax]{transform:none!important}
+}
+@media(max-width:380px){
+  .hero-left .display{font-size:30px}
+  .fizzle-line{font-size:16.5px}
+  .phone-frame{width:82vw}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  html{scroll-behavior:auto!important}
+  .rv,.fizzle-line,.fit-item,.hero-not{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">
+      <svg viewBox="0 0 26 26" fill="none">
+        <circle cx="13" cy="13" r="11" stroke="rgba(80,45,85,0.2)" stroke-width="1.5"/>
+        <path d="M7 18 Q9 12 13 10 Q17 12 19 18" stroke="#8E4A6E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M9 18 Q11 15 13 14 Q15 15 17 18" stroke="#502D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        <line x1="13" y1="18" x2="13" y2="22" stroke="rgba(80,45,85,0.25)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      SlowBrew
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#why">Why SlowBrew</a>
+      <a href="#fit">Is it for you</a>
+      <a href="#founder">Founder note</a>
+    </div>
+    <a class="nav-cta btn-click" href="#join">Join the waitlist</a>
+  </div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="orb hero-orb1" data-parallax="0.06"></div>
+  <div class="orb hero-orb2" data-parallax="-0.04"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <span class="eyebrow rv">AI-powered dating, brewed slowly</span>
+        <h1 class="display rv rv-d1">AI-powered dating for people who are <em>done swiping.</em></h1>
+        <p class="hero-sub rv rv-d2">SlowBrew is a relationship app that uses AI to understand your personality, habits, lifestyle, values, dating intent, and 100+ compatibility variables, then introduces you to people you're actually compatible with.</p>
+        <div class="hero-nots" id="heroNots">
+          <div class="hero-not"><span class="x">✕</span>No endless swiping.</div>
+          <div class="hero-not"><span class="x">✕</span>No random matches.</div>
+          <div class="hero-not"><span class="x">✕</span>No pretending casual is serious.</div>
+        </div>
+        <p class="hero-just rv rv-d3">Just thoughtful, compatibility-first introductions for people who want to find the right person and delete the app.</p>
+        <div class="hero-actions rv rv-d4">
+          <a class="btn btn-plum btn-click" href="#join">Join the waitlist <span class="arrow">→</span></a>
+          <span class="hero-fine">Free early access for the first 2,000 users.</span>
+        </div>
+      </div>
+      <div class="phone-wrap rv rv-d2">
+        <div class="phone-glow"></div>
+        <div class="phone-frame">
+          <div class="phone-notch"></div>
+          <div class="phone-status"><span>9:41</span><span style="letter-spacing:1.5px;font-size:8px">●●●●</span></div>
+          <div class="phone-header">
+            <div class="phone-eyebrow">Your introductions are ready</div>
+            <div class="phone-headline">Meet<br>your 5.</div>
+            <div class="phone-sub">Curated for compatibility, not proximity.</div>
+          </div>
+          <div class="phone-matches" id="phoneMatches"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SECTION 2: PROBLEM ============ -->
+<section class="problem">
+  <div class="orb problem-orb" data-parallax="0.05"></div>
+  <div class="wrap">
+    <div class="problem-inner">
+      <div class="problem-left">
+        <span class="eyebrow rv">The problem</span>
+        <h2 class="display rv rv-d1">Swiping has made dating shallow.</h2>
+        <p class="rv rv-d2">Dating apps gave us more options. But more options didn't make dating easier.</p>
+        <p class="rv rv-d3" style="margin-top:14px">At some point, dating starts feeling less like connection and more like admin. SlowBrew is built for people who are tired of that.</p>
+      </div>
+      <div class="fizzle" id="fizzle">
+        <div class="fizzle-line"><span class="fizzle-num">01</span>You match. You chat. It fizzles.</div>
+        <div class="fizzle-line"><span class="fizzle-num">02</span>You swipe again. You repeat the same conversations.</div>
+        <div class="fizzle-line"><span class="fizzle-num">03</span>You meet people who look good on paper, but don't align in real life.</div>
+        <div class="fizzle-line fizzle-final">Sound familiar? That's not you failing. That's the format.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: THE SHIFT ============ -->
+<section class="shift">
+  <div class="wrap">
+    <div class="shift-inner">
+      <span class="eyebrow rv">The shift</span>
+      <h2 class="display rv rv-d1">You don't need more matches.<br>You need <em>better ones.</em></h2>
+      <p class="shift-body rv rv-d2">Most dating apps start with attraction and leave compatibility for later. <strong>SlowBrew does it differently.</strong> Before showing you matches, our AI gets to know you through a natural conversation. It understands who you are, how you live, what you value, what you're looking for, and what kind of partner could genuinely fit into your life. Then it introduces you to a small set of people who are more likely to make sense.</p>
+      <p class="shift-kicker rv rv-d3">Because finding someone meaningful should not feel like scrolling through a crowd.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: HOW IT WORKS ============ -->
+<section class="how" id="how">
+  <div class="wrap">
+    <div class="how-head">
+      <span class="eyebrow rv">How it works</span>
+      <h2 class="display rv rv-d1">A slower, smarter way to meet someone.</h2>
+    </div>
+    <div class="how-steps">
+      <div class="how-step rv">
+        <div class="hs-num">1</div>
+        <div>
+          <h3 class="hs-title">Have a real conversation with SlowBrew</h3>
+          <div class="hs-tags">
+            <span class="hs-tag">Personality</span><span class="hs-tag">Lifestyle</span><span class="hs-tag">Habits</span><span class="hs-tag">Love language</span><span class="hs-tag">Dating intent</span><span class="hs-tag">Communication style</span>
+          </div>
+        </div>
+        <p class="hs-body"><span class="lead">No boring quiz. No checkbox overload.</span>SlowBrew learns about you through a guided AI conversation that understands your personality, lifestyle, habits, interests, love language, dating intent, communication style, and relationship preferences.</p>
+      </div>
+      <div class="how-step rv">
+        <div class="hs-num">2</div>
+        <div>
+          <h3 class="hs-title">Get profiled beyond your photos</h3>
+        </div>
+        <p class="hs-body"><span class="lead">Your profile is not just your best picture and a clever prompt.</span>SlowBrew looks at deeper signals: how you think, what you want, how you connect, and what kind of relationship you are ready for.</p>
+      </div>
+      <div class="how-step rv">
+        <div class="hs-num">3</div>
+        <div>
+          <h3 class="hs-title">Receive 5 curated matches</h3>
+        </div>
+        <p class="hs-body"><span class="lead">No swiping.</span>You get 5 thoughtfully selected matches at a time, based on real compatibility signals, not just proximity and profile photos.</p>
+      </div>
+      <div class="how-step rv">
+        <div class="hs-num">4</div>
+        <div>
+          <h3 class="hs-title">See why you matched</h3>
+          <div class="hs-tags">
+            <span class="hs-tag green">Shared values</span><span class="hs-tag green">Similar intent</span><span class="hs-tag green">Compatible lifestyles</span><span class="hs-tag green">Emotional alignment</span><span class="hs-tag green">Complementary personalities</span>
+          </div>
+        </div>
+        <p class="hs-body"><span class="lead">SlowBrew tells you what makes the match meaningful.</span>So you don't just meet someone. You understand why they may be worth meeting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: WHY (MUTUAL FRIEND) ============ -->
+<section class="why" id="why">
+  <div class="orb why-orb1" data-parallax="0.05"></div>
+  <div class="orb why-orb2" data-parallax="-0.04"></div>
+  <div class="wrap">
+    <div class="why-inner">
+      <span class="eyebrow rv">Why SlowBrew</span>
+      <h2 class="display rv rv-d1">Built like a mutual friend who actually knows you.</h2>
+      <div class="why-quote rv rv-d2">
+        <p>I know someone you should meet.</p>
+        <span>The best matchmaker line ever written</span>
+      </div>
+      <p class="why-body rv rv-d3">Not because they ran a filter. Not because both of you liked the same movie. But because they understand both of you well enough to sense the fit. SlowBrew brings that feeling back, with AI. It gets to know people deeply, then makes thoughtful introductions based on compatibility, intent, and real-life alignment.</p>
+      <div class="why-tagline rv rv-d4">
+        <span class="less">Less marketplace.</span>
+        <span class="more">More mutual friend energy.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: DIFFERENT ============ -->
+<section class="diff">
+  <div class="wrap">
+    <div class="diff-head">
+      <span class="eyebrow rv">What makes SlowBrew different</span>
+      <h2 class="display rv rv-d1">Everything considered <em>before</em> the match.</h2>
+    </div>
+    <div class="bento">
+      <div class="bento-card bc-1 rv">
+        <span class="bento-icon">🚫</span>
+        <h3>No swiping</h3>
+        <p>You don't browse endlessly. SlowBrew curates.</p>
+      </div>
+      <div class="bento-card bc-2 rv rv-d1">
+        <span class="bento-icon">🖐️</span>
+        <h3>5 matches at a time</h3>
+        <p>A smaller set of better matches, so you can give each person real attention.</p>
+      </div>
+      <div class="bento-card bc-3 rv rv-d1">
+        <span class="bento-icon">🎯</span>
+        <h3>Intent-first dating</h3>
+        <p>Whether you're looking for a serious relationship, long-term partnership, or clarity before commitment, SlowBrew matches you with people who are honest about what they want.</p>
+      </div>
+      <div class="bento-card bc-4 rv rv-d2">
+        <span class="bento-icon">🧭</span>
+        <h3>Deeper compatibility</h3>
+        <p>Personality, habits, lifestyle, values, communication, love languages, interests, attraction, and long-term intent. All considered before the match.</p>
+      </div>
+      <div class="bento-card bc-5 rv rv-d3">
+        <span class="bento-icon">🫀</span>
+        <h3>AI-powered, human-feeling</h3>
+        <p>The AI does not replace chemistry. It simply helps you meet people where chemistry has a better chance of becoming something real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTIONS 7 & 8: FOR / NOT FOR ============ -->
+<section class="fit" id="fit">
+  <div class="wrap">
+    <div class="fit-head">
+      <span class="eyebrow rv">An honest filter</span>
+      <h2 class="display rv rv-d1">SlowBrew isn't for everyone.<br>That's the point.</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-col yes rv">
+        <div class="fit-col-head">SlowBrew is for you if...</div>
+        <div class="fit-item"><span class="fit-mark">✓</span>You're tired of dating app fatigue.</div>
+        <div class="fit-item"><span class="fit-mark">✓</span>You want one right person, not hundreds of half-hearted matches.</div>
+        <div class="fit-item"><span class="fit-mark">✓</span>You care about compatibility, emotional maturity, and intent.</div>
+        <div class="fit-item"><span class="fit-mark">✓</span>You're open to dating, but you don't want to waste time on people who clearly want different things.</div>
+        <div class="fit-item"><span class="fit-mark">✓</span>You want to meet someone and eventually delete the app.</div>
+      </div>
+      <div class="fit-col no rv rv-d1">
+        <div class="fit-col-head">Probably not for you if...</div>
+        <div class="fit-item"><span class="fit-mark">✕</span>You enjoy endless swiping.</div>
+        <div class="fit-item"><span class="fit-mark">✕</span>You want as many options as possible.</div>
+        <div class="fit-item"><span class="fit-mark">✕</span>You don't want clarity.</div>
+        <div class="fit-item"><span class="fit-mark">✕</span>You're not ready to be honest about what you're looking for.</div>
+      </div>
+    </div>
+    <p class="fit-note rv rv-d2">SlowBrew is built for intentional dating. Not infinite browsing.</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 9: SAFETY ============ -->
+<section class="safety">
+  <div class="wrap">
+    <div class="safety-inner">
+      <div class="safety-left">
+        <span class="eyebrow rv">Safety &amp; trust</span>
+        <h2 class="display rv rv-d1">Verified people. Clear intent. Better conversations.</h2>
+        <p class="rv rv-d2">SlowBrew is designed for people who want to date with trust and clarity. We plan to include phone, email, photo, and ID verification so users know they are meeting real people who are serious about the experience.</p>
+        <p class="kicker rv rv-d3">Because a better dating app is not just about better matching. It is also about creating a safer space to meet.</p>
+      </div>
+      <div class="verify-grid">
+        <div class="verify-card rv"><div class="verify-ico">📱</div><h4>Phone verification</h4><p>Every account starts with a real number.</p><span class="verify-badge">Planned</span></div>
+        <div class="verify-card rv rv-d1"><div class="verify-ico">✉️</div><h4>Email verification</h4><p>Confirmed before your first conversation.</p><span class="verify-badge">Planned</span></div>
+        <div class="verify-card rv rv-d2"><div class="verify-ico">📸</div><h4>Photo verification</h4><p>The photos match the person. Always.</p><span class="verify-badge">Planned</span></div>
+        <div class="verify-card rv rv-d3"><div class="verify-ico">🪪</div><h4>ID verification</h4><p>An extra layer for real trust and safety.</p><span class="verify-badge">Planned</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 10: FOUNDER NOTE ============ -->
+<section class="founder" id="founder">
+  <div class="orb founder-orb" data-parallax="0.04"></div>
+  <div class="wrap">
+    <div class="founder-card rv">
+      <span class="eyebrow">Founder note</span>
+      <h2>Why I'm building SlowBrew</h2>
+      <p>I'm building SlowBrew because I know what dating app fatigue feels like. The endless swiping. The same conversations. The promising matches that go nowhere. The feeling that everyone is available, but very few people are actually aligned.</p>
+      <p>I don't believe people need another app that gives them more profiles to scroll through. I believe people need a better way to find someone who fits their life, their values, their pace, and their intent.</p>
+      <p>SlowBrew is my attempt to bring back thoughtfulness into dating.</p>
+      <ul class="founder-list">
+        <li>Not matrimony.</li>
+        <li>Not hookup culture.</li>
+        <li>Not fast-swipe chaos.</li>
+      </ul>
+      <p>Just a slower, smarter way to meet someone who might actually make sense.</p>
+      <div class="founder-sig">
+        <div class="sig-mark">K</div>
+        <div>
+          <div class="sig-name">The founder</div>
+          <div class="sig-role">Building SlowBrew in public</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 11: FINAL CTA ============ -->
+<section class="final" id="join">
+  <div class="wrap">
+    <div class="final-inner">
+      <div class="orb final-orb1"></div>
+      <div class="orb final-orb2"></div>
+      <span class="eyebrow rv">Early access is opening soon</span>
+      <h2 class="display rv rv-d1">Find someone worth slowing down for.</h2>
+      <p class="final-sub rv rv-d2">The first 2,000 users get free access. Join the waitlist and be among the first to experience AI-powered dating built around compatibility, clarity, and real connection.</p>
+      <form class="waitlist rv rv-d3" id="waitlistForm">
+        <input class="wl-input" type="email" placeholder="your@email.com" required aria-label="Email address">
+        <button type="submit" class="btn btn-peach btn-click">Join the waitlist <span class="arrow">→</span></button>
+      </form>
+      <p class="final-fine rv rv-d4">No spam. We'll email you the moment your conversation with SlowBrew is ready.</p>
+      <div class="confirm" id="confirmMsg">You're on the list 🌿 We'll be in touch when early access opens.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg viewBox="0 0 26 26" fill="none">
+            <circle cx="13" cy="13" r="11" stroke="rgba(80,45,85,0.2)" stroke-width="1.5"/>
+            <path d="M7 18 Q9 12 13 10 Q17 12 19 18" stroke="#8E4A6E" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+            <path d="M9 18 Q11 15 13 14 Q15 15 17 18" stroke="#502D55" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+            <line x1="13" y1="18" x2="13" y2="22" stroke="rgba(80,45,85,0.25)" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+          SlowBrew
+        </div>
+        <p class="footer-copy">slowbrew.ai · AI-powered dating built around compatibility, clarity, and real connection.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">X</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- PHONE MOCKUP ---------- */
+var phoneData=[
+  {e:'🎨',name:'Priya, 27',flag:'Shared values',pct:'94%'},
+  {e:'📚',name:'Marcus, 30',flag:'Similar intent',pct:'89%'},
+  {e:'🎵',name:'Anika, 26',flag:'Emotional alignment',pct:'87%'},
+  {e:'🌊',name:'James, 29',flag:'Compatible lifestyle',pct:'84%'},
+  {e:'☕',name:'Sofia, 28',flag:'Complementary energy',pct:'81%'}
+];
+var pmWrap=document.getElementById('phoneMatches');
+if(pmWrap){
+  phoneData.forEach(function(m,i){
+    var d=document.createElement('div');
+    d.className='pm-card';
+    d.style.animationDelay=(0.4+i*0.12)+'s';
+    d.innerHTML='<div class="pm-av">'+m.e+'</div><div><div class="pm-name">'+m.name+'</div><div class="pm-flag">'+m.flag+'</div></div><div class="pm-pct">'+m.pct+'</div>';
+    pmWrap.appendChild(d);
+  });
+}
+
+/* ---------- SCROLL REVEALS ---------- */
+var rvObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}
+  });
+},{threshold:0.18,rootMargin:'0px 0px -6% 0px'});
+document.querySelectorAll('.rv').forEach(function(el){rvObs.observe(el);});
+
+/* hero "no" lines, sequential */
+var notsObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.hero-not').forEach(function(el,i){
+      setTimeout(function(){el.classList.add('in');},450+i*220);
+    });
+    notsObs.disconnect();
+  });
+},{threshold:0.3});
+var hn=document.getElementById('heroNots');
+if(hn)notsObs.observe(hn);
+
+/* fizzle lines, sequential */
+var fzObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.fizzle-line').forEach(function(el,i){
+      setTimeout(function(){el.classList.add('in');},i*380);
+    });
+    fzObs.disconnect();
+  });
+},{threshold:0.3});
+var fz=document.getElementById('fizzle');
+if(fz)fzObs.observe(fz);
+
+/* fit checklist items, sequential per column */
+var fitObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(!e.isIntersecting)return;
+    e.target.querySelectorAll('.fit-item').forEach(function(el,i){
+      setTimeout(function(){el.classList.add('in');},200+i*140);
+    });
+    fitObs.unobserve(e.target);
+  });
+},{threshold:0.3});
+document.querySelectorAll('.fit-col').forEach(function(col){fitObs.observe(col);});
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+var progress=document.getElementById('scrollProgress');
+window.addEventListener('scroll',function(){
+  var h=document.documentElement;
+  var pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  progress.style.width=pct+'%';
+},{passive:true});
+
+/* ---------- PARALLAX ORBS ---------- */
+var parallaxEls=document.querySelectorAll('[data-parallax]');
+var ticking=false;
+window.addEventListener('scroll',function(){
+  if(ticking)return;
+  ticking=true;
+  requestAnimationFrame(function(){
+    var y=window.scrollY;
+    parallaxEls.forEach(function(el){
+      var f=parseFloat(el.getAttribute('data-parallax'));
+      el.style.transform='translateY('+(y*f)+'px)';
+    });
+    ticking=false;
+  });
+},{passive:true});
+
+/* ---------- CLICK RIPPLES ---------- */
+document.querySelectorAll('.btn-click,.btn').forEach(function(btn){
+  btn.addEventListener('click',function(ev){
+    var rect=btn.getBoundingClientRect();
+    var r=document.createElement('span');
+    r.className='ripple';
+    var size=Math.max(rect.width,rect.height);
+    r.style.width=r.style.height=size+'px';
+    r.style.left=(ev.clientX-rect.left-size/2)+'px';
+    r.style.top=(ev.clientY-rect.top-size/2)+'px';
+    btn.appendChild(r);
+    setTimeout(function(){r.remove();},600);
+  });
+});
+
+/* ---------- WAITLIST FORM ---------- */
+document.getElementById('waitlistForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var input=this.querySelector('input[type=email]');
+  if(input.value.trim()){
+    this.style.display='none';
+    document.getElementById('confirmMsg').style.display='block';
+  }
+});
+</script>
+</body>
+</html>
