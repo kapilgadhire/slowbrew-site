@@ -161,6 +161,33 @@ nav{
 .pm-flag{font-size:9.5px;color:#7AC9A1;margin-top:2px;font-weight:500}
 .pm-pct{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7AC9A1;flex-shrink:0;margin-left:auto}
 
+/* ============ EARLY ACCESS BAND ============ */
+.early{padding:64px 0;background:var(--white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);position:relative;overflow:hidden}
+.early-orb{top:-120px;right:-100px;width:340px;height:340px;background:radial-gradient(circle,rgba(196,123,164,0.09) 0%,transparent 70%)}
+.early-inner{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:2}
+.early h2{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:clamp(23px,3vw,32px);color:var(--ink)}
+.early-sub{color:var(--soft);font-size:15.5px;margin-top:10px}
+.early-form{display:flex;gap:12px;margin-top:28px;justify-content:center}
+.early-input{
+  flex:1;max-width:440px;
+  padding:21px 28px;font-size:17px;
+  border-radius:99px;border:2px solid var(--hairline);
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',sans-serif;outline:none;
+  transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.early-input::placeholder{color:var(--dim)}
+.early-input:focus{border-color:var(--plum);background:var(--white);box-shadow:0 0 0 4px rgba(80,45,85,0.08)}
+.early-form .btn{padding:21px 36px;font-size:16px}
+.early-fine{font-size:13px;color:var(--dim);margin-top:14px}
+.early .confirm{background:var(--green-soft);border:1px solid rgba(58,122,88,0.35);color:var(--green)}
+@media(max-width:640px){
+  .early{padding:48px 0}
+  .early-form{flex-direction:column;align-items:stretch}
+  .early-input{max-width:none;text-align:center;padding:18px 22px}
+  .early-form .btn{width:100%;justify-content:center;padding:18px}
+}
+
 /* ============ PROBLEM ============ */
 .problem{padding:104px 0;background:var(--bg-2);position:relative;overflow:hidden}
 .problem-orb{top:-100px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(142,74,110,0.07) 0%,transparent 70%)}
@@ -242,7 +269,7 @@ nav{
 }
 .why-quote:hover{transform:translateY(-4px) rotate(-0.5deg);border-color:rgba(246,219,192,0.3)}
 .why-quote::before{
-  content:"\\201C";
+  content:"\201C";
   position:absolute;top:-24px;left:24px;
   font-family:'Fraunces',serif;font-size:80px;color:var(--rose);line-height:1;
 }
@@ -375,7 +402,7 @@ nav{
 }
 .final-orb1{top:-140px;left:50%;transform:translateX(-50%);width:620px;height:440px;background:radial-gradient(ellipse,rgba(142,74,110,0.35) 0%,transparent 65%)}
 .final-orb2{bottom:-100px;right:-70px;width:340px;height:340px;background:radial-gradient(circle,rgba(58,122,88,0.13) 0%,transparent 70%)}
-.final-inner>*{position:relative;z-index:2}
+.final-inner>*:not(.orb){position:relative;z-index:2}
 .final .eyebrow{color:var(--rose);justify-content:center}
 .final .eyebrow::before{background:var(--peach)}
 .final .display{color:var(--cream);font-size:clamp(32px,4.8vw,58px);margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto}
@@ -529,7 +556,7 @@ footer{padding:0 0 64px}
       <a href="#fit">Is it for you</a>
       <a href="#founder">Founder note</a>
     </div>
-    <a class="nav-cta btn-click" href="#join">Join the waitlist</a>
+    <a class="nav-cta btn-click" href="#early">Join the waitlist</a>
   </div>
   <div class="scroll-progress" id="scrollProgress"></div>
 </nav>
@@ -551,7 +578,7 @@ footer{padding:0 0 64px}
         </div>
         <p class="hero-just rv rv-d3">Just thoughtful, compatibility-first introductions for people who want to find the right person and delete the app.</p>
         <div class="hero-actions rv rv-d4">
-          <a class="btn btn-plum btn-click" href="#join">Join the waitlist <span class="arrow">→</span></a>
+          <a class="btn btn-plum btn-click" href="#early">Join the waitlist <span class="arrow">→</span></a>
           <span class="hero-fine">Free early access for the first 2,000 users.</span>
         </div>
       </div>
@@ -571,6 +598,23 @@ footer{padding:0 0 64px}
     </div>
   </div>
 </header>
+
+<!-- ============ EARLY ACCESS BAND ============ -->
+<section class="early" id="early">
+  <div class="orb early-orb"></div>
+  <div class="wrap">
+    <div class="early-inner">
+      <h2 class="rv">Get early access before the doors open.</h2>
+      <p class="early-sub rv rv-d1">Free for the first 2,000 users. One email, no spam, first in line.</p>
+      <form class="early-form rv rv-d2" id="earlyForm">
+        <input class="early-input" type="email" placeholder="your@email.com" required aria-label="Email address for early access">
+        <button type="submit" class="btn btn-plum btn-click">Get early access <span class="arrow">→</span></button>
+      </form>
+      <p class="early-fine rv rv-d3">We'll email you the moment your conversation with SlowBrew is ready.</p>
+      <div class="confirm" id="earlyConfirm">You're on the list 🌿 We'll be in touch when early access opens.</div>
+    </div>
+  </div>
+</section>
 
 <!-- ============ SECTION 2: PROBLEM ============ -->
 <section class="problem">
@@ -599,7 +643,7 @@ footer{padding:0 0 64px}
     <div class="shift-inner">
       <span class="eyebrow rv">The shift</span>
       <h2 class="display rv rv-d1">You don't need more matches.<br>You need <em>better ones.</em></h2>
-      <p class="shift-body rv rv-d2">Most dating apps start with attraction and leave compatibility for later. <strong>SlowBrew does it differently.</strong> Before showing you matches, our AI gets to know you through a natural conversation. It understands who you are, how you live, what you value, what you're looking for, and what kind of partner could genuinely fit into your life. Then it introduces you to a small set of people who are more likely to make sense.</p>
+      <p class="shift-body rv rv-d2">Most dating apps start with attraction and leave compatibility for later. <strong>SlowBrew gets to know you first,</strong> through a natural conversation, then introduces you to a small set of people who are more likely to make sense.</p>
       <p class="shift-kicker rv rv-d3">Because finding someone meaningful should not feel like scrolling through a crowd.</p>
     </div>
   </div>
@@ -765,7 +809,6 @@ footer{padding:0 0 64px}
       <span class="eyebrow">Founder note</span>
       <h2>Why I'm building SlowBrew</h2>
       <p>I'm building SlowBrew because I know what dating app fatigue feels like. The endless swiping. The same conversations. The promising matches that go nowhere. The feeling that everyone is available, but very few people are actually aligned.</p>
-      <p>I don't believe people need another app that gives them more profiles to scroll through. I believe people need a better way to find someone who fits their life, their values, their pace, and their intent.</p>
       <p>SlowBrew is my attempt to bring back thoughtfulness into dating.</p>
       <ul class="founder-list">
         <li>Not matrimony.</li>
@@ -934,15 +977,22 @@ document.querySelectorAll('.btn-click,.btn').forEach(function(btn){
   });
 });
 
-/* ---------- WAITLIST FORM ---------- */
-document.getElementById('waitlistForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  var input=this.querySelector('input[type=email]');
-  if(input.value.trim()){
-    this.style.display='none';
-    document.getElementById('confirmMsg').style.display='block';
-  }
-});
+/* ---------- WAITLIST FORMS ---------- */
+function wireForm(formId,msgId){
+  var form=document.getElementById(formId);
+  var msg=document.getElementById(msgId);
+  if(!form||!msg)return;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var input=form.querySelector('input[type=email]');
+    if(input.value.trim()){
+      form.style.display='none';
+      msg.style.display='block';
+    }
+  });
+}
+wireForm('earlyForm','earlyConfirm');
+wireForm('waitlistForm','confirmMsg');
 </script>
 </body>
 </html>
