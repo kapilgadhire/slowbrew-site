@@ -71,6 +71,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 .btn-peach{background:var(--peach);color:var(--ink);box-shadow:0 5px 0 rgba(139,74,110,0.45),0 12px 28px rgba(0,0,0,0.18)}
 .btn-peach:hover{transform:translateY(-2px)}
 .btn-peach:active{transform:translateY(3px) scale(.985);box-shadow:0 1px 0 rgba(139,74,110,0.45)}
+.btn-lg{padding:24px 52px;font-size:18px}
 .btn .arrow{display:inline-block;transition:transform .25s var(--ease-spring)}
 .btn:hover .arrow{transform:translateX(4px)}
 /* click ripple */
@@ -167,25 +168,11 @@ nav{
 .early-inner{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:2}
 .early h2{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:clamp(23px,3vw,32px);color:var(--ink)}
 .early-sub{color:var(--soft);font-size:15.5px;margin-top:10px}
-.early-form{display:flex;gap:12px;margin-top:28px;justify-content:center}
-.early-input{
-  flex:1;max-width:440px;
-  padding:21px 28px;font-size:17px;
-  border-radius:99px;border:2px solid var(--hairline);
-  background:var(--bg);color:var(--ink);
-  font-family:'Inter',sans-serif;outline:none;
-  transition:border-color .2s,box-shadow .2s,background .2s;
-}
-.early-input::placeholder{color:var(--dim)}
-.early-input:focus{border-color:var(--plum);background:var(--white);box-shadow:0 0 0 4px rgba(80,45,85,0.08)}
-.early-form .btn{padding:21px 36px;font-size:16px}
+.early-form{display:flex;justify-content:center;margin-top:28px}
 .early-fine{font-size:13px;color:var(--dim);margin-top:14px}
-.early .confirm{background:var(--green-soft);border:1px solid rgba(58,122,88,0.35);color:var(--green)}
 @media(max-width:640px){
   .early{padding:48px 0}
-  .early-form{flex-direction:column;align-items:stretch}
-  .early-input{max-width:none;text-align:center;padding:18px 22px}
-  .early-form .btn{width:100%;justify-content:center;padding:18px}
+  .early-form .btn-lg{width:100%;justify-content:center}
 }
 
 /* ============ PROBLEM ============ */
@@ -407,24 +394,8 @@ nav{
 .final .eyebrow::before{background:var(--peach)}
 .final .display{color:var(--cream);font-size:clamp(32px,4.8vw,58px);margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto}
 .final-sub{color:rgba(250,244,236,0.6);margin-top:18px;font-size:17px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
-.waitlist{display:flex;gap:10px;justify-content:center;margin-top:34px;flex-wrap:wrap;max-width:500px;margin-left:auto;margin-right:auto}
-.wl-input{
-  flex:1;min-width:230px;padding:15px 22px;border-radius:99px;
-  border:1.5px solid rgba(246,219,192,0.2);
-  background:rgba(250,244,236,0.06);
-  font-family:'Inter',sans-serif;font-size:15px;color:var(--cream);
-  outline:none;transition:border-color .2s,background .2s;
-}
-.wl-input::placeholder{color:rgba(250,244,236,0.34)}
-.wl-input:focus{border-color:rgba(246,219,192,0.55);background:rgba(250,244,236,0.09)}
+.waitlist{display:flex;justify-content:center;margin-top:34px}
 .final-fine{font-size:13px;color:rgba(250,244,236,0.32);margin-top:14px}
-.confirm{
-  display:none;background:rgba(58,122,88,0.2);border:1px solid rgba(58,122,88,0.45);
-  border-radius:16px;padding:16px 22px;color:#7AC9A1;font-size:15px;font-weight:600;
-  margin:18px auto 0;max-width:400px;
-  animation:confirmIn .5s var(--ease-spring);
-}
-@keyframes confirmIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 
 /* ============ FOOTER ============ */
 footer{padding:0 0 64px}
@@ -509,8 +480,6 @@ footer{padding:0 0 64px}
   .final-inner{padding:56px 22px;border-radius:24px}
   .final .display{font-size:clamp(28px,8.5vw,38px)}
   .final-sub{font-size:15.5px}
-  .waitlist{flex-direction:column;gap:10px}
-  .wl-input{min-width:0;width:100%;text-align:center;padding:15px 18px}
   .waitlist .btn{width:100%;justify-content:center}
 
   /* footer */
@@ -556,7 +525,7 @@ footer{padding:0 0 64px}
       <a href="#fit">Is it for you</a>
       <a href="#founder">Founder note</a>
     </div>
-    <a class="nav-cta btn-click" href="#early">Join the waitlist</a>
+    <a class="nav-cta btn-click" href="early-access.html">Join the waitlist</a>
   </div>
   <div class="scroll-progress" id="scrollProgress"></div>
 </nav>
@@ -578,7 +547,7 @@ footer{padding:0 0 64px}
         </div>
         <p class="hero-just rv rv-d3">Just thoughtful, compatibility-first introductions for people who want to find the right person and delete the app.</p>
         <div class="hero-actions rv rv-d4">
-          <a class="btn btn-plum btn-click" href="#early">Join the waitlist <span class="arrow">→</span></a>
+          <a class="btn btn-plum btn-click" href="early-access.html">Join the waitlist <span class="arrow">→</span></a>
           <span class="hero-fine">Free early access for the first 2,000 users.</span>
         </div>
       </div>
@@ -598,23 +567,6 @@ footer{padding:0 0 64px}
     </div>
   </div>
 </header>
-
-<!-- ============ EARLY ACCESS BAND ============ -->
-<section class="early" id="early">
-  <div class="orb early-orb"></div>
-  <div class="wrap">
-    <div class="early-inner">
-      <h2 class="rv">Get early access before the doors open.</h2>
-      <p class="early-sub rv rv-d1">Free for the first 2,000 users. One email, no spam, first in line.</p>
-      <form class="early-form rv rv-d2" id="earlyForm">
-        <input class="early-input" type="email" placeholder="your@email.com" required aria-label="Email address for early access">
-        <button type="submit" class="btn btn-plum btn-click">Get early access <span class="arrow">→</span></button>
-      </form>
-      <p class="early-fine rv rv-d3">We'll email you the moment your conversation with SlowBrew is ready.</p>
-      <div class="confirm" id="earlyConfirm">You're on the list 🌿 We'll be in touch when early access opens.</div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ SECTION 2: PROBLEM ============ -->
 <section class="problem">
@@ -637,7 +589,22 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 3: THE SHIFT ============ -->
+<!-- ============ SECTION 3: EARLY ACCESS ============ -->
+<section class="early" id="early">
+  <div class="orb early-orb"></div>
+  <div class="wrap">
+    <div class="early-inner">
+      <h2 class="rv">Get early access before the doors open.</h2>
+      <p class="early-sub rv rv-d1">Free for the first 2,000 users. One email, no spam, first in line.</p>
+      <div class="early-form rv rv-d2">
+        <a class="btn btn-plum btn-click btn-lg" href="early-access.html">Join the waitlist <span class="arrow">→</span></a>
+      </div>
+      <p class="early-fine rv rv-d3">We'll email you the moment your conversation with SlowBrew is ready.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: THE SHIFT ============ -->
 <section class="shift">
   <div class="wrap">
     <div class="shift-inner">
@@ -649,7 +616,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 4: HOW IT WORKS ============ -->
+<!-- ============ SECTION 5: HOW IT WORKS ============ -->
 <section class="how" id="how">
   <div class="wrap">
     <div class="how-head">
@@ -695,7 +662,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 5: WHY (MUTUAL FRIEND) ============ -->
+<!-- ============ SECTION 6: WHY (MUTUAL FRIEND) ============ -->
 <section class="why" id="why">
   <div class="orb why-orb1" data-parallax="0.05"></div>
   <div class="orb why-orb2" data-parallax="-0.04"></div>
@@ -716,7 +683,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 6: DIFFERENT ============ -->
+<!-- ============ SECTION 7: DIFFERENT ============ -->
 <section class="diff">
   <div class="wrap">
     <div class="diff-head">
@@ -753,7 +720,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTIONS 7 & 8: FOR / NOT FOR ============ -->
+<!-- ============ SECTIONS 8 & 9: FOR / NOT FOR ============ -->
 <section class="fit" id="fit">
   <div class="wrap">
     <div class="fit-head">
@@ -781,7 +748,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 9: SAFETY ============ -->
+<!-- ============ SECTION 10: SAFETY ============ -->
 <section class="safety">
   <div class="wrap">
     <div class="safety-inner">
@@ -801,7 +768,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 10: FOUNDER NOTE ============ -->
+<!-- ============ SECTION 11: FOUNDER NOTE ============ -->
 <section class="founder" id="founder">
   <div class="orb founder-orb" data-parallax="0.04"></div>
   <div class="wrap">
@@ -827,7 +794,7 @@ footer{padding:0 0 64px}
   </div>
 </section>
 
-<!-- ============ SECTION 11: FINAL CTA ============ -->
+<!-- ============ SECTION 12: FINAL CTA ============ -->
 <section class="final" id="join">
   <div class="wrap">
     <div class="final-inner">
@@ -836,12 +803,10 @@ footer{padding:0 0 64px}
       <span class="eyebrow rv">Early access is opening soon</span>
       <h2 class="display rv rv-d1">Find someone worth slowing down for.</h2>
       <p class="final-sub rv rv-d2">The first 2,000 users get free access. Join the waitlist and be among the first to experience AI-powered dating built around compatibility, clarity, and real connection.</p>
-      <form class="waitlist rv rv-d3" id="waitlistForm">
-        <input class="wl-input" type="email" placeholder="your@email.com" required aria-label="Email address">
-        <button type="submit" class="btn btn-peach btn-click">Join the waitlist <span class="arrow">→</span></button>
-      </form>
+      <div class="waitlist rv rv-d3">
+        <a class="btn btn-peach btn-click" href="early-access.html">Join the waitlist <span class="arrow">→</span></a>
+      </div>
       <p class="final-fine rv rv-d4">No spam. We'll email you the moment your conversation with SlowBrew is ready.</p>
-      <div class="confirm" id="confirmMsg">You're on the list 🌿 We'll be in touch when early access opens.</div>
     </div>
   </div>
 </section>
@@ -977,22 +942,6 @@ document.querySelectorAll('.btn-click,.btn').forEach(function(btn){
   });
 });
 
-/* ---------- WAITLIST FORMS ---------- */
-function wireForm(formId,msgId){
-  var form=document.getElementById(formId);
-  var msg=document.getElementById(msgId);
-  if(!form||!msg)return;
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var input=form.querySelector('input[type=email]');
-    if(input.value.trim()){
-      form.style.display='none';
-      msg.style.display='block';
-    }
-  });
-}
-wireForm('earlyForm','earlyConfirm');
-wireForm('waitlistForm','confirmMsg');
 </script>
 </body>
 </html>
