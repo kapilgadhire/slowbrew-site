@@ -184,6 +184,13 @@ footer{padding:64px 0}
           <label for="fldName">Name</label>
           <input type="text" id="fldName" name="name" placeholder="Your full name" autocomplete="name" required>
         </div>
+        <script>
+document.getElementById('accessForm').addEventListener('submit', function() {
+  gtag('event', 'access_form_submit', {
+    'form_name': 'slowbrew_access_request'
+  });
+});
+</script>
 
         <div class="field">
           <label for="fldEmail">Email</label>
