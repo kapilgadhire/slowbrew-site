@@ -1,970 +1,2313 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YP3GR61WQ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  gtag('config', 'G-YP3GR61WQ9');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YP3GR61WQ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-YP3GR61WQ9');
+  </script>
   <script src="https://t.contentsquare.net/uxa/b14ae252dacbb.js" defer></script>
-<script type="text/javascript">
+  <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "xiy47zqv63");
-</script>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SlowBrew · Find someone worth slowing down for</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="theme-color" content="#502D55">
-<meta name="description" content="SlowBrew is an AI-powered relationship app that understands who you are, then introduces you to people you're actually compatible with. No endless swiping.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
-<style>
-/* ============ TOKENS ============ */
-:root{
-  --bg:#F8F4E9;
-  --bg-2:#EFE8D6;
-  --white:#FFFFFF;
-  --plum:#502D55;
-  --plum-deep:#2D1545;
-  --plum-night:#1E0D2E;
-  --mauve:#8E4A6E;
-  --rose:#C47BA4;
-  --peach:#F6DBC0;
-  --cream:#FAF4EC;
-  --ink:#1A0F28;
-  --soft:#5A4660;
-  --dim:rgba(90,70,96,0.55);
-  --hairline:rgba(80,45,85,0.13);
-  --green:#3A7A58;
-  --green-soft:rgba(58,122,88,0.12);
-  --max:1120px;
-  --ease-spring:cubic-bezier(.34,1.4,.64,1);
-  --ease-out:cubic-bezier(.22,.61,.36,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-0.015em}
-p{margin:0}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer;border:none;font-family:inherit}
-::selection{background:var(--rose);color:var(--cream)}
+  </script>
 
-.wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
-.display{font-family:'Fraunces',serif;font-style:italic;font-weight:700;color:var(--ink)}
-.display em{font-style:normal;color:var(--plum)}
-.eyebrow{
-  font-family:'Space Mono',monospace;font-size:11px;font-weight:700;
-  letter-spacing:0.13em;text-transform:uppercase;color:var(--mauve);
-  display:inline-flex;align-items:center;gap:8px;
-}
-.eyebrow::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--plum);flex-shrink:0}
-.orb{position:absolute;border-radius:50%;pointer-events:none;will-change:transform}
+  <title>SlowBrew | Find someone worth slowing down for</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="theme-color" content="#9f5238" />
+  <meta
+    name="description"
+    content="SlowBrew is an AI-powered relationship app that gets to know you beyond your photos and introduces you to people you may genuinely connect with."
+  />
 
-/* reveal on scroll */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
-.rv.in{opacity:1;transform:translateY(0)}
-.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}.rv-d4{transition-delay:.32s}
+  <meta property="og:title" content="SlowBrew | Find someone worth slowing down for" />
+  <meta property="og:description" content="Fewer introductions. Deeper compatibility. No endless swiping." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slowbrew.io/" />
+  <meta property="og:image" content="https://images.pexels.com/photos/8732930/pexels-photo-8732930.jpeg?auto=compress&cs=tinysrgb&w=1600" />
 
-/* ============ BUTTONS ============ */
-.btn{
-  position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;gap:9px;
-  border-radius:99px;font-weight:700;font-size:15.5px;
-  padding:16px 32px;
-  transition:transform .18s var(--ease-spring),box-shadow .18s var(--ease-out);
-  transform:translateZ(0);
-}
-.btn-plum{background:var(--plum);color:var(--cream);box-shadow:0 5px 0 var(--plum-deep),0 12px 28px rgba(80,45,85,0.22)}
-.btn-plum:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--plum-deep),0 18px 36px rgba(80,45,85,0.26)}
-.btn-plum:active{transform:translateY(3px) scale(.985);box-shadow:0 1px 0 var(--plum-deep),0 4px 12px rgba(80,45,85,0.2)}
-.btn-peach{background:var(--peach);color:var(--ink);box-shadow:0 5px 0 rgba(139,74,110,0.45),0 12px 28px rgba(0,0,0,0.18)}
-.btn-peach:hover{transform:translateY(-2px)}
-.btn-peach:active{transform:translateY(3px) scale(.985);box-shadow:0 1px 0 rgba(139,74,110,0.45)}
-.btn-lg{padding:24px 52px;font-size:18px}
-.btn .arrow{display:inline-block;transition:transform .25s var(--ease-spring)}
-.btn:hover .arrow{transform:translateX(4px)}
-/* click ripple */
-.ripple{
-  position:absolute;border-radius:50%;pointer-events:none;
-  background:rgba(255,255,255,0.35);
-  transform:scale(0);animation:rip .55s ease-out forwards;
-}
-@keyframes rip{to{transform:scale(3.2);opacity:0}}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap"
+    rel="stylesheet"
+  />
 
-/* ============ NAV ============ */
-nav{
-  position:sticky;top:0;z-index:300;
-  background:rgba(248,244,233,0.88);
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--hairline);
-}
-.scroll-progress{
-  position:absolute;bottom:-1px;left:0;height:2px;width:0%;
-  background:linear-gradient(90deg,var(--mauve),var(--rose));
-  transition:width .1s linear;
-}
-.nav-inner{max-width:var(--max);margin:0 auto;padding:15px 32px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:21px;color:var(--ink)}
-.nav-logo svg{width:auto;height:24px;flex-shrink:0;transition:transform .4s var(--ease-spring)}
-.nav-logo:hover svg{transform:rotate(-8deg) scale(1.08)}
-.nav-links{display:flex;gap:28px}
-.nav-links a{font-size:14px;font-weight:500;color:var(--soft);position:relative;transition:color .15s}
-.nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--plum);transition:width .25s var(--ease-out)}
-.nav-links a:hover{color:var(--plum)}
-.nav-links a:hover::after{width:100%}
-.nav-cta{background:var(--plum);color:var(--cream);font-weight:600;font-size:14px;border-radius:99px;padding:10px 22px;box-shadow:0 4px 0 var(--plum-deep);transition:transform .15s var(--ease-spring),box-shadow .15s;position:relative;overflow:hidden}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 5px 0 var(--plum-deep)}
-.nav-cta:active{transform:translateY(2px);box-shadow:0 1px 0 var(--plum-deep)}
+  <style>
+    :root {
+      --cream: #f5ede2;
+      --paper: #fffaf4;
+      --paper-soft: rgba(255, 250, 244, 0.76);
+      --latte: #e7d1b8;
+      --latte-soft: #f0e1d0;
+      --caramel: #b56f49;
+      --terracotta: #9f5238;
+      --terracotta-dark: #7e3f2d;
+      --coffee: #4a3228;
+      --espresso: #241713;
+      --sage: #78816b;
+      --rose: #c98b84;
+      --line: rgba(57, 36, 29, 0.12);
+      --line-strong: rgba(57, 36, 29, 0.2);
+      --shadow-sm: 0 12px 28px rgba(57, 36, 29, 0.08);
+      --shadow-md: 0 24px 70px rgba(57, 36, 29, 0.12);
+      --shadow-lg: 0 36px 110px rgba(57, 36, 29, 0.16);
+      --radius-xl: 42px;
+      --radius-lg: 30px;
+      --radius-md: 22px;
+      --radius-sm: 14px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
 
-/* ============ HERO ============ */
-.hero{padding:88px 0 96px;position:relative;overflow:hidden}
-.hero-orb1{top:-180px;left:-120px;width:560px;height:560px;background:radial-gradient(circle,rgba(142,74,110,0.11) 0%,transparent 68%)}
-.hero-orb2{top:80px;right:-80px;width:420px;height:420px;background:radial-gradient(circle,rgba(80,45,85,0.08) 0%,transparent 70%)}
-.hero-inner{display:grid;grid-template-columns:1.1fr 400px;gap:56px;align-items:center;position:relative;z-index:2}
-.hero-left .display{font-size:clamp(38px,5vw,60px);margin-top:16px}
-.hero-sub{font-size:17.5px;color:var(--soft);line-height:1.7;margin-top:20px;max-width:520px}
-.hero-nots{margin-top:22px;display:flex;flex-direction:column;gap:8px}
-.hero-not{
-  display:flex;align-items:center;gap:10px;font-size:15px;color:var(--soft);font-weight:500;
-  opacity:0;transform:translateX(-12px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
-}
-.hero-not.in{opacity:1;transform:translateX(0)}
-.hero-not .x{
-  width:20px;height:20px;border-radius:50%;flex-shrink:0;
-  background:rgba(196,123,164,0.15);color:var(--mauve);
-  display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;
-}
-.hero-just{
-  margin-top:18px;font-size:16px;color:var(--ink);font-weight:500;max-width:500px;line-height:1.65;
-  padding-left:16px;border-left:3px solid var(--rose);
-}
-.hero-actions{margin-top:30px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.hero-fine{font-size:13.5px;color:var(--dim)}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* phone mockup */
-.phone-wrap{display:flex;justify-content:center;position:relative}
-.phone-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(58,122,88,0.14) 0%,transparent 70%);pointer-events:none}
-.phone-frame{
-  width:262px;background:#130820;border-radius:38px;overflow:hidden;position:relative;z-index:1;
-  box-shadow:0 0 0 1.5px rgba(246,219,192,0.12),0 30px 70px rgba(80,45,85,0.32),0 0 44px rgba(58,122,88,0.1);
-  transform:rotate(2deg);
-  transition:transform .6s var(--ease-spring);
-}
-.phone-frame:hover{transform:rotate(0deg) translateY(-6px)}
-.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:88px;height:22px;background:#130820;border-radius:99px;z-index:10}
-.phone-status{display:flex;justify-content:space-between;padding:38px 16px 6px;font-size:9.5px;font-weight:600;color:rgba(250,244,236,0.4);font-family:'Space Mono',monospace}
-.phone-header{padding:6px 16px 12px}
-.phone-eyebrow{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C47BA4;display:flex;align-items:center;gap:5px}
-.phone-eyebrow::before{content:"";width:4px;height:4px;border-radius:50%;background:#F6DBC0}
-.phone-headline{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:22px;color:#FAF4EC;margin-top:4px;line-height:1.1}
-.phone-sub{font-size:11px;color:rgba(250,244,236,0.4);margin-top:4px}
-.phone-matches{padding:4px 12px 20px;display:flex;flex-direction:column;gap:7px}
-.pm-card{
-  background:rgba(255,255,255,0.045);border:1.5px solid rgba(246,219,192,0.09);
-  border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:9px;
-  position:relative;overflow:hidden;opacity:0;transform:translateY(8px);animation:pmr .4s forwards;
-}
-@keyframes pmr{to{opacity:1;transform:translateY(0)}}
-.pm-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,#3A7A58,rgba(58,122,88,0.3))}
-.pm-av{width:36px;height:36px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:rgba(58,122,88,0.1);border:1px solid rgba(58,122,88,0.22)}
-.pm-name{font-weight:700;font-size:12px;color:#FAF4EC}
-.pm-flag{font-size:9.5px;color:#7AC9A1;margin-top:2px;font-weight:500}
-.pm-pct{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:#7AC9A1;flex-shrink:0;margin-left:auto}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 110px;
+    }
 
-/* ============ EARLY ACCESS BAND ============ */
-.early{padding:64px 0;background:var(--white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);position:relative;overflow:hidden}
-.early-orb{top:-120px;right:-100px;width:340px;height:340px;background:radial-gradient(circle,rgba(196,123,164,0.09) 0%,transparent 70%)}
-.early-inner{max-width:720px;margin:0 auto;text-align:center;position:relative;z-index:2}
-.early h2{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:clamp(23px,3vw,32px);color:var(--ink)}
-.early-sub{color:var(--soft);font-size:15.5px;margin-top:10px}
-.early-form{display:flex;justify-content:center;margin-top:28px}
-.early-fine{font-size:13px;color:var(--dim);margin-top:14px}
-@media(max-width:640px){
-  .early{padding:48px 0}
-  .early-form .btn-lg{width:100%;justify-content:center}
-}
+    body {
+      min-height: 100vh;
+      color: var(--coffee);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(231, 209, 184, 0.62), transparent 27rem),
+        radial-gradient(circle at 92% 29%, rgba(201, 139, 132, 0.11), transparent 31rem),
+        linear-gradient(180deg, #f8f0e7 0%, var(--cream) 44%, #f7efe6 100%);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ============ PROBLEM ============ */
-.problem{padding:104px 0;background:var(--bg-2);position:relative;overflow:hidden}
-.problem-orb{top:-100px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(142,74,110,0.07) 0%,transparent 70%)}
-.problem-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;position:relative;z-index:2}
-.problem-left .display{font-size:clamp(28px,3.6vw,42px);margin-top:14px}
-.problem-left>p{color:var(--soft);font-size:16.5px;margin-top:18px;max-width:420px;line-height:1.7}
-.fizzle{display:flex;flex-direction:column;gap:0;padding-top:8px}
-.fizzle-line{
-  font-family:'Fraunces',serif;font-style:italic;font-weight:600;
-  font-size:clamp(20px,2.4vw,27px);color:var(--ink);
-  padding:18px 0;border-bottom:1px solid var(--hairline);
-  display:flex;align-items:baseline;gap:14px;
-  opacity:0;transform:translateY(14px);
-  transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);
-}
-.fizzle-line.in{opacity:1;transform:translateY(0)}
-.fizzle-num{font-family:'Space Mono',monospace;font-style:normal;font-size:11px;font-weight:700;color:var(--rose);letter-spacing:0.06em;flex-shrink:0}
-.fizzle-final{
-  padding:22px 0 0;font-family:'Inter',sans-serif;font-style:normal;font-weight:600;
-  font-size:16.5px;color:var(--mauve);border-bottom:none;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.26;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220' viewBox='0 0 220 220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.065'/%3E%3C/svg%3E");
+    }
 
-/* ============ SHIFT ============ */
-.shift{padding:104px 0;position:relative;overflow:hidden}
-.shift-inner{max-width:760px;margin:0 auto;text-align:center;position:relative;z-index:2}
-.shift .display{font-size:clamp(30px,4.2vw,50px);margin-top:16px}
-.shift-body{color:var(--soft);font-size:17px;line-height:1.75;margin-top:24px;max-width:640px;margin-left:auto;margin-right:auto}
-.shift-body strong{color:var(--ink);font-weight:600}
-.shift-kicker{
-  margin-top:34px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;
-  font-size:clamp(19px,2.2vw,24px);color:var(--plum);
-}
+    body.menu-open {
+      overflow: hidden;
+    }
 
-/* ============ HOW IT WORKS ============ */
-.how{padding:104px 0;background:var(--white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
-.how-head{max-width:600px;margin-bottom:64px}
-.how-head .display{font-size:clamp(28px,3.6vw,44px);margin-top:14px}
-.how-steps{display:flex;flex-direction:column;gap:0}
-.how-step{
-  display:grid;grid-template-columns:120px 1fr 1fr;gap:40px;align-items:start;
-  padding:44px 0;border-top:1px solid var(--hairline);
-  transition:background .3s;
-}
-.how-step:last-child{border-bottom:1px solid var(--hairline)}
-.hs-num{
-  font-family:'Fraunces',serif;font-style:italic;font-weight:700;
-  font-size:56px;color:var(--rose);line-height:.9;
-  transition:transform .4s var(--ease-spring),color .3s;
-}
-.how-step:hover .hs-num{transform:scale(1.12) rotate(-4deg);color:var(--mauve)}
-.hs-title{font-size:21px;font-weight:700;color:var(--ink);line-height:1.3;font-family:'Fraunces',serif;font-style:italic}
-.hs-body{font-size:15.5px;color:var(--soft);line-height:1.7}
-.hs-body .lead{color:var(--ink);font-weight:600;display:block;margin-bottom:6px}
-.hs-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
-.hs-tag{
-  font-size:12px;font-weight:600;padding:6px 12px;border-radius:99px;
-  background:var(--bg);border:1px solid var(--hairline);color:var(--soft);
-  transition:transform .2s var(--ease-spring),background .2s,color .2s,border-color .2s;
-}
-.hs-tag:hover{transform:translateY(-2px);background:var(--plum);color:var(--cream);border-color:var(--plum)}
-.hs-tag.green{background:var(--green-soft);border-color:rgba(58,122,88,0.25);color:var(--green)}
-.hs-tag.green:hover{background:var(--green);color:var(--cream);border-color:var(--green)}
+    ::selection {
+      color: var(--paper);
+      background: var(--terracotta);
+    }
 
-/* ============ MUTUAL FRIEND (WHY) ============ */
-.why{padding:112px 0;background:var(--plum-night);position:relative;overflow:hidden;color:var(--cream)}
-.why-orb1{top:-140px;left:-100px;width:480px;height:480px;background:radial-gradient(circle,rgba(142,74,110,0.24) 0%,transparent 68%)}
-.why-orb2{bottom:-120px;right:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(58,122,88,0.1) 0%,transparent 70%)}
-.why-inner{max-width:780px;margin:0 auto;text-align:center;position:relative;z-index:2}
-.why .eyebrow{color:var(--rose)}
-.why .eyebrow::before{background:var(--peach)}
-.why .display{color:var(--cream);font-size:clamp(28px,3.8vw,46px);margin-top:16px}
-.why-quote{
-  margin:40px auto 0;max-width:480px;
-  background:rgba(250,244,236,0.05);
-  border:1px solid rgba(246,219,192,0.14);
-  border-radius:20px;padding:28px 32px;
-  position:relative;
-  transition:transform .4s var(--ease-spring),border-color .3s;
-}
-.why-quote:hover{transform:translateY(-4px) rotate(-0.5deg);border-color:rgba(246,219,192,0.3)}
-.why-quote::before{
-  content:"\201C";
-  position:absolute;top:-24px;left:24px;
-  font-family:'Fraunces',serif;font-size:80px;color:var(--rose);line-height:1;
-}
-.why-quote p{font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(20px,2.4vw,26px);color:var(--cream);line-height:1.4}
-.why-quote span{display:block;margin-top:12px;font-family:'Space Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(250,244,236,0.4)}
-.why-body{color:rgba(250,244,236,0.62);font-size:16.5px;line-height:1.75;margin:36px auto 0;max-width:560px}
-.why-tagline{
-  margin-top:34px;display:inline-flex;align-items:center;gap:14px;
-  font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(19px,2.4vw,25px);
-}
-.why-tagline .less{color:rgba(250,244,236,0.4);text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:2px}
-.why-tagline .more{color:var(--peach)}
+    img {
+      display: block;
+      width: 100%;
+    }
 
-/* ============ DIFFERENT (bento) ============ */
-.diff{padding:104px 0}
-.diff-head{max-width:600px;margin-bottom:56px}
-.diff-head .display{font-size:clamp(28px,3.6vw,44px);margin-top:14px}
-.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
-.bento-card{
-  background:var(--white);border:1px solid var(--hairline);border-radius:22px;padding:30px;
-  transition:transform .35s var(--ease-spring),box-shadow .35s var(--ease-out),border-color .3s;
-  position:relative;overflow:hidden;
-}
-.bento-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(80,45,85,0.12);border-color:rgba(80,45,85,0.25)}
-.bento-card::after{
-  content:"";position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--mauve),var(--rose));
-  transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out);
-}
-.bento-card:hover::after{transform:scaleX(1)}
-.bc-1{grid-column:span 3}
-.bc-2{grid-column:span 3}
-.bc-3{grid-column:span 2}
-.bc-4{grid-column:span 2}
-.bc-5{grid-column:span 2}
-.bento-icon{font-size:28px;display:block;margin-bottom:14px}
-.bento-card h3{font-size:19px;font-weight:700;font-family:'Fraunces',serif;font-style:italic;color:var(--ink)}
-.bento-card p{font-size:14.5px;color:var(--soft);margin-top:9px;line-height:1.65}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* ============ FOR / NOT FOR ============ */
-.fit{padding:104px 0;background:var(--bg-2);border-top:1px solid var(--hairline)}
-.fit-head{text-align:center;max-width:560px;margin:0 auto 56px}
-.fit-head .display{font-size:clamp(28px,3.6vw,42px);margin-top:14px}
-.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:960px;margin:0 auto}
-.fit-col{border-radius:24px;padding:36px;position:relative;overflow:hidden}
-.fit-col.yes{background:var(--white);border:1.5px solid rgba(58,122,88,0.25)}
-.fit-col.no{background:rgba(255,255,255,0.5);border:1.5px solid var(--hairline)}
-.fit-col-head{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:22px;margin-bottom:22px}
-.fit-col.yes .fit-col-head{color:var(--green)}
-.fit-col.no .fit-col-head{color:var(--dim)}
-.fit-item{
-  display:flex;gap:12px;align-items:flex-start;padding:11px 0;font-size:15px;line-height:1.55;
-  opacity:0;transform:translateX(-10px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);
-}
-.fit-item.in{opacity:1;transform:translateX(0)}
-.fit-col.yes .fit-item{color:var(--ink)}
-.fit-col.no .fit-item{color:var(--dim)}
-.fit-mark{
-  width:22px;height:22px;border-radius:50%;flex-shrink:0;margin-top:1px;
-  display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;
-}
-.fit-col.yes .fit-mark{background:var(--green-soft);color:var(--green)}
-.fit-col.no .fit-mark{background:rgba(90,70,96,0.08);color:var(--dim)}
-.fit-note{text-align:center;margin-top:36px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:clamp(17px,2vw,21px);color:var(--plum)}
+    button,
+    input {
+      font: inherit;
+    }
 
-/* ============ SAFETY ============ */
-.safety{padding:104px 0}
-.safety-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.safety-left .display{font-size:clamp(26px,3.4vw,40px);margin-top:14px}
-.safety-left p{color:var(--soft);font-size:16px;line-height:1.75;margin-top:18px;max-width:440px}
-.safety-left .kicker{margin-top:18px;color:var(--ink);font-weight:600;font-size:16px}
-.verify-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.verify-card{
-  background:var(--white);border:1px solid var(--hairline);border-radius:18px;padding:24px 22px;
-  display:flex;flex-direction:column;gap:10px;
-  transition:transform .3s var(--ease-spring),box-shadow .3s,border-color .3s;
-}
-.verify-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(80,45,85,0.1);border-color:rgba(58,122,88,0.35)}
-.verify-ico{
-  width:40px;height:40px;border-radius:12px;background:var(--green-soft);
-  display:flex;align-items:center;justify-content:center;font-size:19px;
-}
-.verify-card h4{margin:0;font-size:15.5px;font-weight:700;color:var(--ink)}
-.verify-card p{font-size:13px;color:var(--soft);line-height:1.55}
-.verify-badge{
-  font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:0.08em;
-  text-transform:uppercase;color:var(--green);background:var(--green-soft);
-  padding:3px 8px;border-radius:99px;align-self:flex-start;
-}
+    button {
+      cursor: pointer;
+    }
 
-/* ============ FOUNDER ============ */
-.founder{padding:104px 0;background:var(--bg-2);border-top:1px solid var(--hairline);position:relative;overflow:hidden}
-.founder-orb{top:-80px;left:-100px;width:380px;height:380px;background:radial-gradient(circle,rgba(196,123,164,0.08) 0%,transparent 70%)}
-.founder-card{
-  max-width:680px;margin:0 auto;background:var(--white);
-  border:1px solid var(--hairline);border-radius:26px;padding:56px 60px;
-  position:relative;z-index:2;
-  box-shadow:0 24px 60px rgba(80,45,85,0.1);
-  transform:rotate(-0.4deg);
-  transition:transform .5s var(--ease-spring);
-}
-.founder-card:hover{transform:rotate(0deg)}
-.founder-card .eyebrow{margin-bottom:18px}
-.founder-card h2{font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:clamp(24px,3vw,32px);color:var(--ink)}
-.founder-card p{color:var(--soft);font-size:16px;line-height:1.8;margin-top:18px}
-.founder-list{margin:20px 0 0;padding:0;list-style:none}
-.founder-list li{
-  font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:17.5px;color:var(--ink);
-  padding:9px 0 9px 22px;position:relative;
-}
-.founder-list li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:2px;background:var(--rose)}
-.founder-sig{
-  margin-top:30px;padding-top:26px;border-top:1px solid var(--hairline);
-  display:flex;align-items:center;gap:14px;
-}
-.sig-mark{
-  width:44px;height:44px;border-radius:50%;flex-shrink:0;
-  background:var(--plum);color:var(--cream);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Fraunces',serif;font-style:italic;font-weight:700;font-size:20px;
-}
-.sig-name{font-weight:700;font-size:15px;color:var(--ink)}
-.sig-role{font-size:13px;color:var(--dim)}
+    .container {
+      width: min(1180px, calc(100% - 44px));
+      margin-inline: auto;
+    }
 
-/* ============ FINAL CTA ============ */
-.final{padding:112px 0 120px}
-.final-inner{
-  background:var(--plum-night);border-radius:32px;padding:88px 64px;text-align:center;
-  position:relative;overflow:hidden;
-}
-.final-orb1{top:-140px;left:50%;transform:translateX(-50%);width:620px;height:440px;background:radial-gradient(ellipse,rgba(142,74,110,0.35) 0%,transparent 65%)}
-.final-orb2{bottom:-100px;right:-70px;width:340px;height:340px;background:radial-gradient(circle,rgba(58,122,88,0.13) 0%,transparent 70%)}
-.final-inner>*:not(.orb){position:relative;z-index:2}
-.final .eyebrow{color:var(--rose);justify-content:center}
-.final .eyebrow::before{background:var(--peach)}
-.final .display{color:var(--cream);font-size:clamp(32px,4.8vw,58px);margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto}
-.final-sub{color:rgba(250,244,236,0.6);margin-top:18px;font-size:17px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
-.waitlist{display:flex;justify-content:center;margin-top:34px}
-.final-fine{font-size:13px;color:rgba(250,244,236,0.32);margin-top:14px}
+    .section {
+      position: relative;
+      padding: 116px 0;
+    }
 
-/* ============ FOOTER ============ */
-footer{padding:0 0 64px}
-.footer-inner{border-top:1px solid var(--hairline);padding-top:36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
-.footer-logo{display:flex;align-items:center;gap:9px;font-family:'Fraunces',serif;font-style:italic;font-weight:600;font-size:19px;color:var(--ink)}
-.footer-logo svg{width:auto;height:22px}
-.footer-copy{font-size:14px;color:var(--dim);margin-top:6px}
-.footer-links{display:flex;gap:22px;font-size:14px;font-weight:500}
-.footer-links a{color:var(--soft);transition:color .15s,transform .2s;display:inline-block}
-.footer-links a:hover{color:var(--plum);transform:translateY(-2px)}
+    .section-soft {
+      background: rgba(255, 250, 244, 0.72);
+      border-block: 1px solid rgba(57, 36, 29, 0.055);
+    }
 
-/* ============ RESPONSIVE ============ */
-@media(max-width:980px){
-  .hero-inner{grid-template-columns:1fr;gap:52px}
-  .phone-wrap{order:1;margin-top:8px}
-  .problem-inner,.safety-inner{grid-template-columns:1fr;gap:44px}
-  .how-step{grid-template-columns:70px 1fr;gap:20px}
-  .how-step .hs-body{grid-column:2}
-  .bento{grid-template-columns:1fr 1fr}
-  .bc-1,.bc-2,.bc-3,.bc-4,.bc-5{grid-column:span 1}
-  .fit-grid{grid-template-columns:1fr}
-  .final-inner{padding:64px 32px}
-  .founder-card{padding:40px 32px}
-}
-@media(max-width:640px){
-  .wrap{padding:0 20px}
-  body{font-size:15px}
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--terracotta), var(--caramel), var(--rose));
+      box-shadow: 0 2px 10px rgba(159, 82, 56, 0.28);
+      pointer-events: none;
+    }
 
-  /* nav */
-  .nav-inner{padding:12px 20px}
-  .nav-links{display:none}
-  .nav-logo{font-size:18px}
-  .nav-cta{padding:9px 16px;font-size:13px}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: var(--terracotta);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
 
-  /* hero */
-  .hero{padding:48px 0 64px}
-  .hero-left .display{font-size:clamp(32px,9vw,40px)}
-  .hero-sub{font-size:15.5px}
-  .hero-just{font-size:15px}
-  .hero-actions{flex-direction:column;align-items:stretch;gap:12px}
-  .hero-actions .btn{justify-content:center;width:100%}
-  .hero-fine{text-align:center}
-  .phone-frame{width:min(262px,78vw);transform:rotate(0deg)}
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      transform-origin: left;
+      transition: transform 360ms var(--ease);
+    }
 
-  /* section rhythm */
-  .problem,.shift,.how,.why,.diff,.fit,.safety,.founder{padding:68px 0}
-  .final{padding:68px 0 76px}
+    [data-reveal].revealed .eyebrow::before,
+    .eyebrow:hover::before {
+      transform: scaleX(1.35);
+    }
 
-  /* problem */
-  .fizzle-line{font-size:18px;padding:15px 0;gap:10px}
-  .fizzle-final{font-size:15px}
+    h1,
+    h2,
+    h3,
+    .logo,
+    .metric-number,
+    .quote {
+      font-family: "Fraunces", serif;
+      letter-spacing: -0.038em;
+    }
 
-  /* how it works: stack fully, number inline with title */
-  .how-head{margin-bottom:40px}
-  .how-step{grid-template-columns:1fr;gap:12px;padding:32px 0}
-  .how-step .hs-body{grid-column:1}
-  .hs-num{font-size:34px;line-height:1}
-  .hs-title{font-size:19px}
-  .hs-tags{margin-top:12px}
-  .hs-tag{padding:7px 13px;font-size:12.5px}
+    h1,
+    h2,
+    h3 {
+      color: var(--espresso);
+    }
 
-  /* why */
-  .why-quote{padding:24px 22px;margin-top:34px}
-  .why-quote::before{font-size:60px;top:-18px;left:16px}
-  .why-tagline{flex-direction:column;gap:6px;align-items:center}
-  .why-body{font-size:15.5px}
+    h1 {
+      max-width: 760px;
+      font-size: clamp(3.65rem, 7vw, 7.15rem);
+      font-weight: 600;
+      line-height: 0.98;
+    }
 
-  /* bento + fit + verify */
-  .bento{grid-template-columns:1fr;gap:14px}
-  .bento-card{padding:26px 24px}
-  .fit-col{padding:28px 24px}
-  .fit-item{padding:12px 0}
-  .verify-grid{grid-template-columns:1fr;gap:12px}
+    h2 {
+      font-size: clamp(2.35rem, 4.5vw, 4.65rem);
+      font-weight: 600;
+      line-height: 1.03;
+    }
 
-  /* founder */
-  .founder-card{padding:34px 24px;transform:none}
-  .founder-card h2{font-size:23px}
-  .founder-card p{font-size:15px}
-  .founder-list li{font-size:16px}
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.12;
+    }
 
-  /* final cta */
-  .final-inner{padding:56px 22px;border-radius:24px}
-  .final .display{font-size:clamp(28px,8.5vw,38px)}
-  .final-sub{font-size:15.5px}
-  .waitlist .btn{width:100%;justify-content:center}
+    p {
+      color: rgba(74, 50, 40, 0.76);
+    }
 
-  /* footer */
-  .footer-inner{flex-direction:column;align-items:flex-start;gap:20px}
+    .btn {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 23px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-weight: 700;
+      transition:
+        transform 220ms var(--ease),
+        color 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        background 220ms ease;
+    }
 
-  /* comfortable tap targets everywhere */
-  .btn,.nav-cta,.footer-links a{min-height:44px}
-  .footer-links{gap:26px}
-  .footer-links a{display:inline-flex;align-items:center}
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: rgba(255, 255, 255, 0.13);
+      transform: translateX(-110%) skewX(-16deg);
+      transition: transform 480ms var(--ease);
+    }
 
-  /* disable parallax on small screens, it fights with touch scrolling */
-  [data-parallax]{transform:none!important}
-}
-@media(max-width:380px){
-  .hero-left .display{font-size:30px}
-  .fizzle-line{font-size:16.5px}
-  .phone-frame{width:82vw}
-}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{transition:none!important;animation:none!important}
-  html{scroll-behavior:auto!important}
-  .rv,.fizzle-line,.fit-item,.hero-not{opacity:1!important;transform:none!important}
-}
-</style>
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:hover::before {
+      transform: translateX(110%) skewX(-16deg);
+    }
+
+    .btn:active {
+      transform: translateY(-1px) scale(0.985);
+    }
+
+    .btn-primary {
+      color: var(--paper);
+      background: var(--terracotta);
+      box-shadow: 0 14px 30px rgba(159, 82, 56, 0.24);
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta-dark);
+      box-shadow: 0 20px 42px rgba(159, 82, 56, 0.3);
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      background: rgba(255, 250, 244, 0.65);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--line-strong);
+      background: rgba(255, 250, 244, 0.92);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      font-size: 1.08rem;
+      transition: transform 220ms var(--ease);
+    }
+
+    .btn:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 50;
+      width: 100%;
+      padding: 18px 0;
+      transition:
+        padding 260ms ease,
+        background 260ms ease,
+        border-color 260ms ease,
+        box-shadow 260ms ease;
+    }
+
+    .site-header.scrolled {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(57, 36, 29, 0.08);
+      background: rgba(248, 240, 231, 0.82);
+      box-shadow: 0 12px 36px rgba(57, 36, 29, 0.06);
+      backdrop-filter: blur(18px) saturate(130%);
+    }
+
+    .nav-shell {
+      display: flex;
+      min-height: 62px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 8px 0 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      transition:
+        background 260ms ease,
+        border-color 260ms ease;
+    }
+
+    .site-header:not(.scrolled) .nav-shell {
+      border-color: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 250, 244, 0.24);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--espresso);
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      height: 1.1em;
+      flex-shrink: 0;
+      align-items: center;
+      transition: transform 320ms var(--ease);
+    }
+
+    .logo-mark svg {
+      display: block;
+      width: auto;
+      height: 100%;
+    }
+
+    .logo:hover .logo-mark {
+      transform: rotate(-8deg) scale(1.04);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(74, 50, 40, 0.72);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition:
+        color 180ms ease,
+        background 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--terracotta);
+      background: rgba(159, 82, 56, 0.07);
+    }
+
+    .nav-shell > .btn {
+      min-height: 46px;
+      padding-inline: 18px;
+      font-size: 0.88rem;
+    }
+
+    .mobile-menu {
+      display: none;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--coffee);
+      background: rgba(255, 250, 244, 0.8);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.76);
+      font-size: 1.05rem;
+    }
+
+    .mobile-panel {
+      position: fixed;
+      top: 86px;
+      right: 20px;
+      left: 20px;
+      z-index: 49;
+      display: grid;
+      gap: 8px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 250, 244, 0.97);
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-10px) scale(0.985);
+      transition:
+        opacity 220ms ease,
+        transform 220ms var(--ease);
+    }
+
+    .mobile-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .mobile-panel a {
+      padding: 13px 14px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: background 180ms ease;
+    }
+
+    .mobile-panel a:hover {
+      background: var(--cream);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 850px;
+      padding: 148px 0 86px;
+      overflow: clip;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 70px;
+      right: -230px;
+      width: 580px;
+      height: 580px;
+      border: 1px solid rgba(159, 82, 56, 0.075);
+      border-radius: 50%;
+      box-shadow:
+        inset 0 0 0 55px rgba(159, 82, 56, 0.018),
+        inset 0 0 0 110px rgba(159, 82, 56, 0.012);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      align-items: center;
+      gap: clamp(52px, 7vw, 100px);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-copy h1 em {
+      display: inline;
+      color: var(--terracotta);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .hero-text {
+      max-width: 590px;
+      margin-top: 27px;
+      font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 13px;
+      margin-top: 33px;
+    }
+
+    .microcopy {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: rgba(74, 50, 40, 0.58);
+      font-size: 0.8rem;
+    }
+
+    .microcopy::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 5px rgba(120, 129, 107, 0.12);
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .hero-metric {
+      min-width: 130px;
+    }
+
+    .hero-metric strong {
+      display: block;
+      color: var(--espresso);
+      font-family: "Fraunces", serif;
+      font-size: 1.42rem;
+      line-height: 1;
+    }
+
+    .hero-metric span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(74, 50, 40, 0.56);
+      font-size: 0.76rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 610px;
+      perspective: 1200px;
+    }
+
+    .hero-photo-wrap {
+      position: absolute;
+      inset: 8px 0 0 42px;
+      transform-style: preserve-3d;
+      transition: transform 160ms ease-out;
+    }
+
+    .hero-photo {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 48% 48% 34px 34px;
+      background: var(--latte);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero-photo img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: sepia(7%) saturate(86%) contrast(94%);
+      transform: scale(1.025);
+      transition: transform 1s var(--ease);
+    }
+
+    .hero-photo-wrap:hover .hero-photo img {
+      transform: scale(1.055);
+    }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), transparent 45%),
+        linear-gradient(180deg, transparent 52%, rgba(36, 23, 19, 0.25));
+    }
+
+    .visual-frame {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 64%;
+      height: 68%;
+      border: 1px solid rgba(159, 82, 56, 0.18);
+      border-radius: 50% 50% 30px 30px;
+      transform: translateZ(-30px);
+      pointer-events: none;
+    }
+
+    .match-card {
+      position: absolute;
+      left: 0;
+      bottom: 58px;
+      z-index: 4;
+      width: min(318px, 76%);
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 24px;
+      background: rgba(255, 250, 244, 0.86);
+      box-shadow: 0 22px 60px rgba(57, 36, 29, 0.19);
+      backdrop-filter: blur(16px) saturate(135%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .match-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 9px;
+    }
+
+    .match-card small {
+      color: var(--terracotta);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: rgba(74, 50, 40, 0.55);
+      font-size: 0.68rem;
+      font-weight: 600;
+    }
+
+    .status-dot::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--sage);
+      box-shadow: 0 0 0 4px rgba(120, 129, 107, 0.12);
+    }
+
+    .match-card strong {
+      display: block;
+      color: var(--espresso);
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .match-card p {
+      margin-top: 7px;
+      font-size: 0.82rem;
+    }
+
+    .match-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .match-faces {
+      display: flex;
+    }
+
+    .match-faces span {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      margin-right: -8px;
+      place-items: center;
+      border: 2px solid var(--paper);
+      border-radius: 50%;
+      color: var(--paper);
+      background: var(--rose);
+      box-shadow: 0 5px 14px rgba(57, 36, 29, 0.11);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .match-faces span:nth-child(2) {
+      background: var(--sage);
+    }
+
+    .match-faces span:nth-child(3) {
+      background: var(--caramel);
+    }
+
+    .match-count {
+      color: rgba(74, 50, 40, 0.58);
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+
+    .floating-chip {
+      position: absolute;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 13px;
+      border: 1px solid rgba(255, 255, 255, 0.56);
+      border-radius: 999px;
+      color: var(--coffee);
+      background: rgba(255, 250, 244, 0.78);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+      font-size: 0.73rem;
+      font-weight: 700;
+      animation: float-soft 7s ease-in-out infinite;
+    }
+
+    .floating-chip::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--terracotta);
+    }
+
+    .chip-one {
+      top: 58px;
+      left: 8px;
+      animation-delay: -1.2s;
+    }
+
+    .chip-two {
+      right: -20px;
+      bottom: 145px;
+      animation-delay: -3s;
+    }
+
+    .coffee-stain {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      pointer-events: none;
+      opacity: 0.08;
+    }
+
+    .stain-one {
+      top: 130px;
+      right: -118px;
+      transform: rotate(18deg);
+    }
+
+    .stain-two {
+      bottom: 36px;
+      left: -128px;
+      transform: rotate(-24deg);
+    }
+
+    .coffee-ring {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 11px solid #88523a;
+      border-radius: 50%;
+      filter: blur(0.35px);
+    }
+
+    .coffee-ring::before,
+    .coffee-ring::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: #88523a;
+      opacity: 0.68;
+    }
+
+    .coffee-ring::before {
+      top: 8%;
+      left: 3%;
+      width: 16px;
+      height: 9px;
+      transform: rotate(-30deg);
+    }
+
+    .coffee-ring::after {
+      right: -8px;
+      bottom: 18%;
+      width: 24px;
+      height: 12px;
+      transform: rotate(32deg);
+    }
+
+    .trust-strip {
+      padding: 0 0 54px;
+    }
+
+    .trust-card {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 40px;
+      padding: 32px 38px;
+      border: 1px solid rgba(57, 36, 29, 0.09);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 244, 0.62);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(12px);
+    }
+
+    .trust-card h2 {
+      font-size: clamp(2rem, 3.8vw, 3.55rem);
+    }
+
+    .trust-card p {
+      max-width: 440px;
+      justify-self: end;
+      font-size: 1.03rem;
+    }
+
+    .marquee-shell {
+      position: relative;
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background: rgba(255, 250, 244, 0.48);
+    }
+
+    .marquee-shell::before,
+    .marquee-shell::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2;
+      width: 110px;
+      pointer-events: none;
+    }
+
+    .marquee-shell::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--cream), transparent);
+    }
+
+    .marquee-shell::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--cream), transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      padding: 17px 17px 17px 0;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(74, 50, 40, 0.6);
+      font-size: 0.77rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .marquee-item::before {
+      content: "✦";
+      color: var(--terracotta);
+      font-size: 0.66rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 38px;
+      margin-bottom: 54px;
+    }
+
+    .section-head h2 {
+      max-width: 730px;
+    }
+
+    .section-head p {
+      max-width: 410px;
+      padding-bottom: 8px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      position: relative;
+      min-height: 302px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(255, 250, 244, 0.58);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+      transition:
+        transform 320ms var(--ease),
+        border-color 320ms ease,
+        box-shadow 320ms ease,
+        background 320ms ease;
+    }
+
+    .step:hover {
+      transform: translateY(-8px);
+      border-color: rgba(159, 82, 56, 0.22);
+      background: rgba(255, 250, 244, 0.96);
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 54px;
+    }
+
+    .step-number {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--terracotta);
+      background: rgba(181, 111, 73, 0.13);
+      font-weight: 800;
+      transition:
+        color 280ms ease,
+        background 280ms ease,
+        transform 280ms var(--ease);
+    }
+
+    .step:hover .step-number {
+      color: var(--paper);
+      background: var(--terracotta);
+      transform: rotate(-7deg) scale(1.06);
+    }
+
+    .step-icon {
+      width: 42px;
+      height: 42px;
+      color: rgba(74, 50, 40, 0.42);
+      transition:
+        color 280ms ease,
+        transform 280ms var(--ease);
+    }
+
+    .step:hover .step-icon {
+      color: var(--terracotta);
+      transform: translateY(-3px) rotate(4deg);
+    }
+
+    .step p {
+      margin-top: 12px;
+      font-size: 0.94rem;
+    }
+
+    .step::after {
+      content: "";
+      position: absolute;
+      right: -74px;
+      bottom: -84px;
+      width: 170px;
+      height: 170px;
+      border: 8px solid rgba(159, 82, 56, 0.045);
+      border-radius: 50%;
+      transition: transform 500ms var(--ease);
+    }
+
+    .step:hover::after {
+      transform: scale(1.18);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .experience-image {
+      position: relative;
+      min-height: 590px;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background: var(--latte);
+      box-shadow: var(--shadow-md);
+    }
+
+    .experience-image img {
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(9%) saturate(82%) contrast(94%);
+      transition: transform 900ms var(--ease);
+    }
+
+    .experience-image:hover img {
+      transform: scale(1.045);
+    }
+
+    .experience-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 48%, rgba(36, 23, 19, 0.54));
+    }
+
+    .image-caption {
+      position: absolute;
+      right: 34px;
+      bottom: 30px;
+      left: 34px;
+      z-index: 2;
+      max-width: 480px;
+      color: var(--paper);
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.9rem, 3vw, 3.15rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .experience-stack {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .experience-card {
+      position: relative;
+      display: flex;
+      min-height: 280px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 250, 244, 0.72);
+      transition:
+        transform 300ms var(--ease),
+        box-shadow 300ms ease,
+        border-color 300ms ease;
+    }
+
+    .experience-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(159, 82, 56, 0.2);
+      box-shadow: var(--shadow-md);
+    }
+
+    .experience-card.dark {
+      border-color: rgba(255, 255, 255, 0.06);
+      background: var(--espresso);
+    }
+
+    .experience-card.dark h3,
+    .experience-card.dark p,
+    .experience-card.dark .experience-label {
+      color: var(--paper);
+    }
+
+    .experience-card.dark p {
+      color: rgba(255, 250, 244, 0.65);
+    }
+
+    .experience-label {
+      color: var(--terracotta);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .experience-card h3 {
+      max-width: 340px;
+      font-size: clamp(1.7rem, 2.4vw, 2.5rem);
+    }
+
+    .experience-card p {
+      max-width: 380px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .mini-ui {
+      display: grid;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .mini-ui span {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 9px 11px;
+      border: 1px solid rgba(255, 250, 244, 0.09);
+      border-radius: 12px;
+      color: rgba(255, 250, 244, 0.72);
+      background: rgba(255, 250, 244, 0.04);
+      font-size: 0.76rem;
+    }
+
+    .mini-ui i {
+      width: 52px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--latte);
+      opacity: 0.8;
+    }
+
+    .difference-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      align-items: center;
+      gap: 76px;
+    }
+
+    .difference-copy h2 {
+      margin-bottom: 23px;
+    }
+
+    .difference-copy > p {
+      max-width: 540px;
+      font-size: 1.04rem;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 250, 244, 0.52);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition:
+        color 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease,
+        transform 220ms var(--ease);
+    }
+
+    .pill:hover {
+      color: var(--paper);
+      border-color: var(--terracotta);
+      background: var(--terracotta);
+      transform: translateY(-2px);
+    }
+
+    .compatibility-card {
+      position: relative;
+      padding: 34px;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 92% 8%, rgba(201, 139, 132, 0.16), transparent 15rem),
+        var(--espresso);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .compatibility-card::before {
+      content: "";
+      position: absolute;
+      top: -145px;
+      right: -120px;
+      width: 330px;
+      height: 330px;
+      border: 36px solid rgba(255, 250, 244, 0.04);
+      border-radius: 50%;
+      transition: transform 900ms var(--ease);
+    }
+
+    .compatibility-card:hover::before {
+      transform: rotate(16deg) scale(1.08);
+    }
+
+    .compatibility-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .compatibility-card small {
+      color: rgba(255, 250, 244, 0.55);
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .compatibility-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      border: 1px solid rgba(255, 250, 244, 0.1);
+      border-radius: 999px;
+      color: rgba(255, 250, 244, 0.72);
+      background: rgba(255, 250, 244, 0.05);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .compatibility-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #a6bb8c;
+    }
+
+    .compatibility-score {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      margin: 22px 0 34px;
+      color: var(--paper);
+    }
+
+    .compatibility-score strong {
+      font-family: "Fraunces", serif;
+      font-size: 5.8rem;
+      line-height: 0.8;
+    }
+
+    .compatibility-score span {
+      padding-bottom: 8px;
+      color: rgba(255, 250, 244, 0.62);
+    }
+
+    .signal {
+      margin-top: 20px;
+    }
+
+    .signal-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: rgba(255, 250, 244, 0.79);
+      font-size: 0.84rem;
+    }
+
+    .signal-track {
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255, 250, 244, 0.09);
+    }
+
+    .signal-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--latte), #f1e2d2);
+      transition: width 1.15s var(--ease);
+    }
+
+    .compatibility-card.revealed .signal-fill {
+      width: var(--score);
+    }
+
+    .quote-section {
+      position: relative;
+      padding: 124px 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .quote {
+      max-width: 930px;
+      margin-inline: auto;
+      color: var(--espresso);
+      font-size: clamp(2.6rem, 5vw, 5.2rem);
+      line-height: 1.07;
+    }
+
+    .quote em {
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .quote-note {
+      margin-top: 25px;
+      color: rgba(74, 50, 40, 0.56);
+      font-size: 0.88rem;
+    }
+
+    .cta-section {
+      padding: 46px 0 92px;
+    }
+
+    .cta-box {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 0.82fr;
+      align-items: center;
+      gap: 56px;
+      padding: clamp(44px, 7vw, 84px);
+      overflow: hidden;
+      border-radius: 42px;
+      color: var(--paper);
+      background:
+        radial-gradient(circle at 89% 7%, rgba(201, 139, 132, 0.18), transparent 18rem),
+        radial-gradient(circle at 8% 110%, rgba(181, 111, 73, 0.14), transparent 21rem),
+        var(--espresso);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      right: -110px;
+      bottom: -135px;
+      width: 320px;
+      height: 320px;
+      border: 24px solid rgba(255, 250, 244, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-box h2 {
+      color: var(--paper);
+    }
+
+    .cta-box p {
+      max-width: 560px;
+      margin-top: 18px;
+      color: rgba(255, 250, 244, 0.66);
+    }
+
+    .waitlist-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 9px;
+      padding: 7px;
+      border: 1px solid rgba(255, 250, 244, 0.13);
+      border-radius: 999px;
+      background: rgba(255, 250, 244, 0.065);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition:
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+    }
+
+    .waitlist-form:focus-within {
+      border-color: rgba(231, 209, 184, 0.42);
+      box-shadow: 0 0 0 5px rgba(231, 209, 184, 0.06);
+    }
+
+    .waitlist-form input {
+      min-width: 0;
+      flex: 1;
+      padding: 0 14px;
+      border: 0;
+      outline: 0;
+      color: var(--paper);
+      background: transparent;
+    }
+
+    .waitlist-form input::placeholder {
+      color: rgba(255, 250, 244, 0.42);
+    }
+
+    .waitlist-form .btn {
+      flex: 0 0 auto;
+      color: var(--espresso);
+      background: var(--latte);
+      box-shadow: none;
+    }
+
+    .form-note {
+      margin-top: 12px !important;
+      font-size: 0.76rem;
+    }
+
+    .form-message {
+      min-height: 20px;
+      margin: 10px 4px 0;
+      color: var(--latte) !important;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      padding: 0 0 38px;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 27px;
+      border-top: 1px solid var(--line);
+      color: rgba(74, 50, 40, 0.54);
+      font-size: 0.81rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 6px;
+    }
+
+    .footer-links a {
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition:
+        color 180ms ease,
+        background 180ms ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--terracotta);
+      background: rgba(159, 82, 56, 0.07);
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 25;
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--espresso);
+      background: rgba(255, 250, 244, 0.86);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(14px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition:
+        opacity 220ms ease,
+        transform 220ms var(--ease),
+        background 220ms ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      color: var(--paper);
+      background: var(--terracotta);
+      transform: translateY(-3px);
+    }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 760ms var(--ease),
+        transform 760ms var(--ease);
+      transition-delay: var(--delay, 0ms);
+    }
+
+    [data-reveal="left"] {
+      transform: translateX(-34px);
+    }
+
+    [data-reveal="right"] {
+      transform: translateX(34px);
+    }
+
+    [data-reveal="scale"] {
+      transform: scale(0.96);
+    }
+
+    [data-reveal].revealed {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-10px) rotate(0.5deg); }
+    }
+
+    @keyframes float-soft {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links,
+      .nav-shell > .btn {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: grid;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 130px;
+      }
+
+      .hero-grid,
+      .difference-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-copy h1,
+      .hero-text {
+        margin-inline: auto;
+      }
+
+      .hero-actions,
+      .hero-metrics,
+      .microcopy {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 570px;
+        margin-top: 18px;
+      }
+
+      .hero-photo-wrap {
+        inset: 0 4vw 0 10vw;
+      }
+
+      .trust-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .trust-card p {
+        justify-self: center;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 20px;
+      }
+
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-image {
+        min-height: 520px;
+      }
+
+      .difference-grid {
+        gap: 50px;
+      }
+
+      .cta-box {
+        text-align: center;
+      }
+
+      .cta-box p {
+        margin-inline: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .site-header {
+        padding: 10px 0;
+      }
+
+      .nav-shell {
+        min-height: 56px;
+      }
+
+      h1 {
+        font-size: clamp(3.35rem, 15.3vw, 5.35rem);
+      }
+
+      .hero {
+        padding-bottom: 48px;
+      }
+
+      .hero-visual {
+        min-height: 500px;
+      }
+
+      .hero-photo-wrap {
+        inset: 0;
+      }
+
+      .hero-photo {
+        border-radius: 150px 150px 30px 30px;
+      }
+
+      .floating-chip {
+        display: none;
+      }
+
+      .match-card {
+        bottom: 28px;
+        left: 14px;
+      }
+
+      .hero-metrics {
+        gap: 16px;
+      }
+
+      .hero-metric {
+        min-width: 105px;
+      }
+
+      .trust-card {
+        padding: 30px 22px;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step {
+        min-height: 260px;
+      }
+
+      .step-top {
+        margin-bottom: 38px;
+      }
+
+      .experience-image {
+        min-height: 440px;
+      }
+
+      .experience-stack {
+        grid-template-rows: auto;
+      }
+
+      .experience-card {
+        min-height: 270px;
+      }
+
+      .cta-box {
+        padding: 46px 22px;
+        border-radius: 30px;
+      }
+
+      .waitlist-form {
+        display: grid;
+        border-radius: 22px;
+      }
+
+      .waitlist-form input {
+        min-height: 50px;
+        text-align: center;
+      }
+
+      .waitlist-form .btn {
+        width: 100%;
+      }
+
+      .footer-row {
+        display: grid;
+        justify-items: center;
+        text-align: center;
+      }
+
+      /* Keep tap targets at the 44px minimum on touch screens. */
+      .footer-links a {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        padding: 8px 14px;
+      }
+
+      .back-to-top {
+        right: 16px;
+        bottom: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions {
+        display: grid;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-metrics {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-metric:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .hero-visual {
+        min-height: 450px;
+      }
+
+      .match-card {
+        width: calc(100% - 28px);
+      }
+
+      .experience-image {
+        min-height: 390px;
+      }
+
+      .compatibility-card {
+        padding: 26px;
+      }
+
+      .compatibility-score strong {
+        font-size: 4.75rem;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-<!-- ============ NAV ============ -->
-<nav>
-  <div class="nav-inner">
-    <a class="nav-logo" href="#top">
-      <svg viewBox="1 12 54 38" fill="none" aria-hidden="true">
-        <path d="M26,23 Q21,19 27,16" stroke="#502D55" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-        <path d="M30,27 Q35,20 27,16" stroke="#935073" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-        <rect x="10" y="24" width="18" height="20" rx="7" stroke="#502D55" stroke-width="2.5"/>
-        <path d="M10,29 C4,29 4,39 10,39" stroke="#502D55" stroke-width="2.5"/>
-        <rect x="28" y="28" width="18" height="20" rx="7" stroke="#935073" stroke-width="2.5"/>
-        <path d="M46,33 C52,33 52,43 46,43" stroke="#935073" stroke-width="2.5"/>
-      </svg>
-      SlowBrew
-    </a>
-    <div class="nav-links">
-      <a href="#how">How it works</a>
-      <a href="#why">Why SlowBrew</a>
-      <a href="#fit">Is it for you</a>
-      <a href="#founder">Founder note</a>
-    </div>
-    <a class="nav-cta btn-click" href="early-access.html">Join the waitlist</a>
-  </div>
-  <div class="scroll-progress" id="scrollProgress"></div>
-</nav>
-
-<!-- ============ HERO ============ -->
-<header class="hero" id="top">
-  <div class="orb hero-orb1" data-parallax="0.06"></div>
-  <div class="orb hero-orb2" data-parallax="-0.04"></div>
-  <div class="wrap">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <span class="eyebrow rv">AI-powered dating, brewed slowly</span>
-        <h1 class="display rv rv-d1">AI-powered dating for people who are <em>done swiping.</em></h1>
-        <p class="hero-sub rv rv-d2">SlowBrew is a relationship app that uses AI to understand your personality, habits, lifestyle, values, dating intent, and 100+ compatibility variables, then introduces you to people you're actually compatible with.</p>
-        <div class="hero-nots" id="heroNots">
-          <div class="hero-not"><span class="x">✕</span>No endless swiping.</div>
-          <div class="hero-not"><span class="x">✕</span>No random matches.</div>
-          <div class="hero-not"><span class="x">✕</span>No pretending casual is serious.</div>
-        </div>
-        <p class="hero-just rv rv-d3">Just thoughtful, compatibility-first introductions for people who want to find the right person and delete the app.</p>
-        <div class="hero-actions rv rv-d4">
-          <a class="btn btn-plum btn-click" href="early-access.html">Join the waitlist <span class="arrow">→</span></a>
-          <span class="hero-fine">Free early access for the first 2,000 users.</span>
-        </div>
-      </div>
-      <div class="phone-wrap rv rv-d2">
-        <div class="phone-glow"></div>
-        <div class="phone-frame">
-          <div class="phone-notch"></div>
-          <div class="phone-status"><span>9:41</span><span style="letter-spacing:1.5px;font-size:8px">●●●●</span></div>
-          <div class="phone-header">
-            <div class="phone-eyebrow">Your introductions are ready</div>
-            <div class="phone-headline">Meet<br>your 5.</div>
-            <div class="phone-sub">Curated for compatibility, not proximity.</div>
-          </div>
-          <div class="phone-matches" id="phoneMatches"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- ============ SECTION 2: PROBLEM ============ -->
-<section class="problem">
-  <div class="orb problem-orb" data-parallax="0.05"></div>
-  <div class="wrap">
-    <div class="problem-inner">
-      <div class="problem-left">
-        <span class="eyebrow rv">The problem</span>
-        <h2 class="display rv rv-d1">Swiping has made dating shallow.</h2>
-        <p class="rv rv-d2">Dating apps gave us more options. But more options didn't make dating easier.</p>
-        <p class="rv rv-d3" style="margin-top:14px">At some point, dating starts feeling less like connection and more like admin. SlowBrew is built for people who are tired of that.</p>
-      </div>
-      <div class="fizzle" id="fizzle">
-        <div class="fizzle-line"><span class="fizzle-num">01</span>You match. You chat. It fizzles.</div>
-        <div class="fizzle-line"><span class="fizzle-num">02</span>You swipe again. You repeat the same conversations.</div>
-        <div class="fizzle-line"><span class="fizzle-num">03</span>You meet people who look good on paper, but don't align in real life.</div>
-        <div class="fizzle-line fizzle-final">Sound familiar? That's not you failing. That's the format.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 3: EARLY ACCESS ============ -->
-<section class="early" id="early">
-  <div class="orb early-orb"></div>
-  <div class="wrap">
-    <div class="early-inner">
-      <h2 class="rv">Get early access before the doors open.</h2>
-      <p class="early-sub rv rv-d1">Free for the first 2,000 users. One email, no spam, first in line.</p>
-      <div class="early-form rv rv-d2">
-        <a class="btn btn-plum btn-click btn-lg" href="early-access.html">Join the waitlist <span class="arrow">→</span></a>
-      </div>
-      <p class="early-fine rv rv-d3">We'll email you the moment your conversation with SlowBrew is ready.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 4: THE SHIFT ============ -->
-<section class="shift">
-  <div class="wrap">
-    <div class="shift-inner">
-      <span class="eyebrow rv">The shift</span>
-      <h2 class="display rv rv-d1">You don't need more matches.<br>You need <em>better ones.</em></h2>
-      <p class="shift-body rv rv-d2">Most dating apps start with attraction and leave compatibility for later. <strong>SlowBrew gets to know you first,</strong> through a natural conversation, then introduces you to a small set of people who are more likely to make sense.</p>
-      <p class="shift-kicker rv rv-d3">Because finding someone meaningful should not feel like scrolling through a crowd.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 5: HOW IT WORKS ============ -->
-<section class="how" id="how">
-  <div class="wrap">
-    <div class="how-head">
-      <span class="eyebrow rv">How it works</span>
-      <h2 class="display rv rv-d1">A slower, smarter way to meet someone.</h2>
-    </div>
-    <div class="how-steps">
-      <div class="how-step rv">
-        <div class="hs-num">1</div>
-        <div>
-          <h3 class="hs-title">Have a real conversation with SlowBrew</h3>
-          <div class="hs-tags">
-            <span class="hs-tag">Personality</span><span class="hs-tag">Lifestyle</span><span class="hs-tag">Habits</span><span class="hs-tag">Love language</span><span class="hs-tag">Dating intent</span><span class="hs-tag">Communication style</span>
-          </div>
-        </div>
-        <p class="hs-body"><span class="lead">No boring quiz. No checkbox overload.</span>SlowBrew learns about you through a guided AI conversation that understands your personality, lifestyle, habits, interests, love language, dating intent, communication style, and relationship preferences.</p>
-      </div>
-      <div class="how-step rv">
-        <div class="hs-num">2</div>
-        <div>
-          <h3 class="hs-title">Get profiled beyond your photos</h3>
-        </div>
-        <p class="hs-body"><span class="lead">Your profile is not just your best picture and a clever prompt.</span>SlowBrew looks at deeper signals: how you think, what you want, how you connect, and what kind of relationship you are ready for.</p>
-      </div>
-      <div class="how-step rv">
-        <div class="hs-num">3</div>
-        <div>
-          <h3 class="hs-title">Receive 5 curated matches</h3>
-        </div>
-        <p class="hs-body"><span class="lead">No swiping.</span>You get 5 thoughtfully selected matches at a time, based on real compatibility signals, not just proximity and profile photos.</p>
-      </div>
-      <div class="how-step rv">
-        <div class="hs-num">4</div>
-        <div>
-          <h3 class="hs-title">See why you matched</h3>
-          <div class="hs-tags">
-            <span class="hs-tag green">Shared values</span><span class="hs-tag green">Similar intent</span><span class="hs-tag green">Compatible lifestyles</span><span class="hs-tag green">Emotional alignment</span><span class="hs-tag green">Complementary personalities</span>
-          </div>
-        </div>
-        <p class="hs-body"><span class="lead">SlowBrew tells you what makes the match meaningful.</span>So you don't just meet someone. You understand why they may be worth meeting.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 6: WHY (MUTUAL FRIEND) ============ -->
-<section class="why" id="why">
-  <div class="orb why-orb1" data-parallax="0.05"></div>
-  <div class="orb why-orb2" data-parallax="-0.04"></div>
-  <div class="wrap">
-    <div class="why-inner">
-      <span class="eyebrow rv">Why SlowBrew</span>
-      <h2 class="display rv rv-d1">Built like a mutual friend who actually knows you.</h2>
-      <div class="why-quote rv rv-d2">
-        <p>I know someone you should meet.</p>
-        <span>The best matchmaker line ever written</span>
-      </div>
-      <p class="why-body rv rv-d3">Not because they ran a filter. Not because both of you liked the same movie. But because they understand both of you well enough to sense the fit. SlowBrew brings that feeling back, with AI. It gets to know people deeply, then makes thoughtful introductions based on compatibility, intent, and real-life alignment.</p>
-      <div class="why-tagline rv rv-d4">
-        <span class="less">Less marketplace.</span>
-        <span class="more">More mutual friend energy.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 7: DIFFERENT ============ -->
-<section class="diff">
-  <div class="wrap">
-    <div class="diff-head">
-      <span class="eyebrow rv">What makes SlowBrew different</span>
-      <h2 class="display rv rv-d1">Everything considered <em>before</em> the match.</h2>
-    </div>
-    <div class="bento">
-      <div class="bento-card bc-1 rv">
-        <span class="bento-icon">🚫</span>
-        <h3>No swiping</h3>
-        <p>You don't browse endlessly. SlowBrew curates.</p>
-      </div>
-      <div class="bento-card bc-2 rv rv-d1">
-        <span class="bento-icon">🖐️</span>
-        <h3>5 matches at a time</h3>
-        <p>A smaller set of better matches, so you can give each person real attention.</p>
-      </div>
-      <div class="bento-card bc-3 rv rv-d1">
-        <span class="bento-icon">🎯</span>
-        <h3>Intent-first dating</h3>
-        <p>Whether you're looking for a serious relationship, long-term partnership, or clarity before commitment, SlowBrew matches you with people who are honest about what they want.</p>
-      </div>
-      <div class="bento-card bc-4 rv rv-d2">
-        <span class="bento-icon">🧭</span>
-        <h3>Deeper compatibility</h3>
-        <p>Personality, habits, lifestyle, values, communication, love languages, interests, attraction, and long-term intent. All considered before the match.</p>
-      </div>
-      <div class="bento-card bc-5 rv rv-d3">
-        <span class="bento-icon">🫀</span>
-        <h3>AI-powered, human-feeling</h3>
-        <p>The AI does not replace chemistry. It simply helps you meet people where chemistry has a better chance of becoming something real.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTIONS 8 & 9: FOR / NOT FOR ============ -->
-<section class="fit" id="fit">
-  <div class="wrap">
-    <div class="fit-head">
-      <span class="eyebrow rv">An honest filter</span>
-      <h2 class="display rv rv-d1">SlowBrew isn't for everyone.<br>That's the point.</h2>
-    </div>
-    <div class="fit-grid">
-      <div class="fit-col yes rv">
-        <div class="fit-col-head">SlowBrew is for you if...</div>
-        <div class="fit-item"><span class="fit-mark">✓</span>You're tired of dating app fatigue.</div>
-        <div class="fit-item"><span class="fit-mark">✓</span>You want one right person, not hundreds of half-hearted matches.</div>
-        <div class="fit-item"><span class="fit-mark">✓</span>You care about compatibility, emotional maturity, and intent.</div>
-        <div class="fit-item"><span class="fit-mark">✓</span>You're open to dating, but you don't want to waste time on people who clearly want different things.</div>
-        <div class="fit-item"><span class="fit-mark">✓</span>You want to meet someone and eventually delete the app.</div>
-      </div>
-      <div class="fit-col no rv rv-d1">
-        <div class="fit-col-head">Probably not for you if...</div>
-        <div class="fit-item"><span class="fit-mark">✕</span>You enjoy endless swiping.</div>
-        <div class="fit-item"><span class="fit-mark">✕</span>You want as many options as possible.</div>
-        <div class="fit-item"><span class="fit-mark">✕</span>You don't want clarity.</div>
-        <div class="fit-item"><span class="fit-mark">✕</span>You're not ready to be honest about what you're looking for.</div>
-      </div>
-    </div>
-    <p class="fit-note rv rv-d2">SlowBrew is built for intentional dating. Not infinite browsing.</p>
-  </div>
-</section>
-
-<!-- ============ SECTION 10: SAFETY ============ -->
-<section class="safety">
-  <div class="wrap">
-    <div class="safety-inner">
-      <div class="safety-left">
-        <span class="eyebrow rv">Safety &amp; trust</span>
-        <h2 class="display rv rv-d1">Verified people. Clear intent. Better conversations.</h2>
-        <p class="rv rv-d2">SlowBrew is designed for people who want to date with trust and clarity. We plan to include phone, email, photo, and ID verification so users know they are meeting real people who are serious about the experience.</p>
-        <p class="kicker rv rv-d3">Because a better dating app is not just about better matching. It is also about creating a safer space to meet.</p>
-      </div>
-      <div class="verify-grid">
-        <div class="verify-card rv"><div class="verify-ico">📱</div><h4>Phone verification</h4><p>Every account starts with a real number.</p><span class="verify-badge">Planned</span></div>
-        <div class="verify-card rv rv-d1"><div class="verify-ico">✉️</div><h4>Email verification</h4><p>Confirmed before your first conversation.</p><span class="verify-badge">Planned</span></div>
-        <div class="verify-card rv rv-d2"><div class="verify-ico">📸</div><h4>Photo verification</h4><p>The photos match the person. Always.</p><span class="verify-badge">Planned</span></div>
-        <div class="verify-card rv rv-d3"><div class="verify-ico">🪪</div><h4>ID verification</h4><p>An extra layer for real trust and safety.</p><span class="verify-badge">Planned</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 11: FOUNDER NOTE ============ -->
-<section class="founder" id="founder">
-  <div class="orb founder-orb" data-parallax="0.04"></div>
-  <div class="wrap">
-    <div class="founder-card rv">
-      <span class="eyebrow">Founder note</span>
-      <h2>Why I'm building SlowBrew</h2>
-      <p>I'm building SlowBrew because I know what dating app fatigue feels like. The endless swiping. The same conversations. The promising matches that go nowhere. The feeling that everyone is available, but very few people are actually aligned.</p>
-      <p>SlowBrew is my attempt to bring back thoughtfulness into dating.</p>
-      <ul class="founder-list">
-        <li>Not matrimony.</li>
-        <li>Not hookup culture.</li>
-        <li>Not fast-swipe chaos.</li>
-      </ul>
-      <p>Just a slower, smarter way to meet someone who might actually make sense.</p>
-      <div class="founder-sig">
-        <div class="sig-mark">K</div>
-        <div>
-          <div class="sig-name">The founder</div>
-          <div class="sig-role">Building SlowBrew in public</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SECTION 12: FINAL CTA ============ -->
-<section class="final" id="join">
-  <div class="wrap">
-    <div class="final-inner">
-      <div class="orb final-orb1"></div>
-      <div class="orb final-orb2"></div>
-      <span class="eyebrow rv">Early access is opening soon</span>
-      <h2 class="display rv rv-d1">Find someone worth slowing down for.</h2>
-      <p class="final-sub rv rv-d2">The first 2,000 users get free access. Join the waitlist and be among the first to experience AI-powered dating built around compatibility, clarity, and real connection.</p>
-      <div class="waitlist rv rv-d3">
-        <a class="btn btn-peach btn-click" href="early-access.html">Join the waitlist <span class="arrow">→</span></a>
-      </div>
-      <p class="final-fine rv rv-d4">No spam. We'll email you the moment your conversation with SlowBrew is ready.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FOOTER ============ -->
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <svg viewBox="1 12 54 38" fill="none" aria-hidden="true">
-            <path d="M26,23 Q21,19 27,16" stroke="#502D55" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-            <path d="M30,27 Q35,20 27,16" stroke="#935073" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-            <rect x="10" y="24" width="18" height="20" rx="7" stroke="#502D55" stroke-width="2.5"/>
-            <path d="M10,29 C4,29 4,39 10,39" stroke="#502D55" stroke-width="2.5"/>
-            <rect x="28" y="28" width="18" height="20" rx="7" stroke="#935073" stroke-width="2.5"/>
-            <path d="M46,33 C52,33 52,43 46,43" stroke="#935073" stroke-width="2.5"/>
-          </svg>
+  <header class="site-header" id="siteHeader">
+    <div class="container">
+      <div class="nav-shell">
+        <a href="#top" class="logo" aria-label="SlowBrew home">
+          <span class="logo-mark" aria-hidden="true"><svg viewBox="1 12 54 38" fill="none"><path d="M26,23 Q21,19 27,16" stroke="#9f5238" stroke-width="2" stroke-linecap="round" opacity="0.6"/><path d="M30,27 Q35,20 27,16" stroke="#b56f49" stroke-width="2" stroke-linecap="round" opacity="0.6"/><rect x="10" y="24" width="18" height="20" rx="7" stroke="#9f5238" stroke-width="2.5"/><path d="M10,29 C4,29 4,39 10,39" stroke="#9f5238" stroke-width="2.5"/><rect x="28" y="28" width="18" height="20" rx="7" stroke="#b56f49" stroke-width="2.5"/><path d="M46,33 C52,33 52,43 46,43" stroke="#b56f49" stroke-width="2.5"/></svg></span>
           SlowBrew
-        </div>
-        <p class="footer-copy">slowbrew.ai · AI-powered dating built around compatibility, clarity, and real connection.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#">X</a>
-        <a href="#">Instagram</a>
-        <a href="#">TikTok</a>
-        <a href="#">Privacy</a>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#how">How it works</a>
+          <a href="#experience">The experience</a>
+          <a href="#different">Why SlowBrew</a>
+          <a href="#story">Our story</a>
+        </nav>
+
+        <a href="early-access.html" class="btn btn-primary">Join the waitlist</a>
+
+        <button
+          class="mobile-menu"
+          type="button"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="mobilePanel"
+        >
+          ☰
+        </button>
       </div>
     </div>
-  </div>
-</footer>
 
-<script>
-/* ---------- PHONE MOCKUP ---------- */
-var phoneData=[
-  {e:'🎨',name:'Priya, 27',flag:'Shared values',pct:'94%'},
-  {e:'📚',name:'Marcus, 30',flag:'Similar intent',pct:'89%'},
-  {e:'🎵',name:'Anika, 26',flag:'Emotional alignment',pct:'87%'},
-  {e:'🌊',name:'James, 29',flag:'Compatible lifestyle',pct:'84%'},
-  {e:'☕',name:'Sofia, 28',flag:'Complementary energy',pct:'81%'}
-];
-var pmWrap=document.getElementById('phoneMatches');
-if(pmWrap){
-  phoneData.forEach(function(m,i){
-    var d=document.createElement('div');
-    d.className='pm-card';
-    d.style.animationDelay=(0.4+i*0.12)+'s';
-    d.innerHTML='<div class="pm-av">'+m.e+'</div><div><div class="pm-name">'+m.name+'</div><div class="pm-flag">'+m.flag+'</div></div><div class="pm-pct">'+m.pct+'</div>';
-    pmWrap.appendChild(d);
-  });
-}
+    <nav class="mobile-panel" id="mobilePanel" aria-label="Mobile navigation">
+      <a href="#how">How it works</a>
+      <a href="#experience">The experience</a>
+      <a href="#different">Why SlowBrew</a>
+      <a href="#story">Our story</a>
+      <a href="early-access.html">Join the waitlist</a>
+    </nav>
+  </header>
 
-/* ---------- SCROLL REVEALS ---------- */
-var rvObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target);}
-  });
-},{threshold:0.18,rootMargin:'0px 0px -6% 0px'});
-document.querySelectorAll('.rv').forEach(function(el){rvObs.observe(el);});
+  <main id="top">
+    <section class="hero">
+      <div class="coffee-stain stain-one" aria-hidden="true">
+        <span class="coffee-ring"></span>
+      </div>
 
-/* hero "no" lines, sequential */
-var notsObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('.hero-not').forEach(function(el,i){
-      setTimeout(function(){el.classList.add('in');},450+i*220);
+      <div class="container hero-grid">
+        <div class="hero-copy" data-reveal="left">
+          <span class="eyebrow">Fewer matches. Better possibilities.</span>
+
+          <h1>
+            Stop collecting matches.
+            Meet someone worth
+            <em>slowing down</em>
+            for.
+          </h1>
+
+          <p class="hero-text">
+            Most dating apps give you more profiles, not better possibilities. SlowBrew learns your values, lifestyle, communication style and relationship intent, then introduces you to just five people who may genuinely fit.
+          </p>
+
+          <div class="hero-actions">
+            <a href="early-access.html" class="btn btn-primary">
+              Join the waitlist
+              <span class="btn-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
+
+          <p class="microcopy">Free early access for the first 2,000 members. No endless swiping. No spam.</p>
+
+          <div class="hero-metrics" aria-label="SlowBrew highlights">
+            <div class="hero-metric">
+              <strong>5</strong>
+              <span>thoughtful introductions</span>
+            </div>
+            <div class="hero-metric">
+              <strong>100+</strong>
+              <span>compatibility signals</span>
+            </div>
+            <div class="hero-metric">
+              <strong>0</strong>
+              <span>endless swipe stacks</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal="right">
+          <div class="hero-photo-wrap" id="heroPhotoWrap">
+            <div class="visual-frame" aria-hidden="true"></div>
+            <div class="hero-photo">
+              <img
+                src="https://images.pexels.com/photos/8732930/pexels-photo-8732930.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                alt="A couple holding hands during a quiet coffee date"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+
+          <div class="floating-chip chip-one">Values aligned</div>
+          <div class="floating-chip chip-two">Intent matched</div>
+
+          <div class="match-card">
+            <div class="match-card-header">
+              <small>Your introductions are ready</small>
+              <span class="status-dot">Curated</span>
+            </div>
+
+            <strong>Five thoughtful matches. No swipe stack.</strong>
+            <p>Curated for compatibility, not proximity.</p>
+
+            <div class="match-footer">
+              <div class="match-faces" aria-label="Three sample match profiles">
+                <span>A</span>
+                <span>M</span>
+                <span>R</span>
+              </div>
+              <span class="match-count">+2 more</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div class="container">
+        <div class="trust-card" data-reveal="scale">
+          <h2>You do not need more matches. You need better ones.</h2>
+          <p>
+            Less browsing through strangers. More thoughtful introductions to people who want what you want.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee-shell" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span class="marquee-item">Values</span>
+          <span class="marquee-item">Lifestyle</span>
+          <span class="marquee-item">Communication</span>
+          <span class="marquee-item">Relationship intent</span>
+          <span class="marquee-item">Love language</span>
+          <span class="marquee-item">Emotional rhythm</span>
+        </div>
+        <div class="marquee-group">
+          <span class="marquee-item">Values</span>
+          <span class="marquee-item">Lifestyle</span>
+          <span class="marquee-item">Communication</span>
+          <span class="marquee-item">Relationship intent</span>
+          <span class="marquee-item">Love language</span>
+          <span class="marquee-item">Emotional rhythm</span>
+        </div>
+      </div>
+    </div>
+
+    <section class="section section-soft" id="how">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="eyebrow">How it works</span>
+            <h2>A calmer way to meet someone.</h2>
+          </div>
+
+          <p>
+            SlowBrew considers personality, values, lifestyle, communication, habits and relationship intent before suggesting a match.
+          </p>
+        </div>
+
+        <div class="steps">
+          <article class="step" data-reveal style="--delay: 40ms">
+            <div class="step-top">
+              <span class="step-number">01</span>
+              <svg class="step-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <path d="M10 13.5h28v18H22l-8 6v-6h-4v-18Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M16 20h16M16 25h10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Have a real conversation</h3>
+            <p>Skip the checkbox marathon. Talk naturally with SlowBrew and let it understand who you are.</p>
+          </article>
+
+          <article class="step" data-reveal style="--delay: 120ms">
+            <div class="step-top">
+              <span class="step-number">02</span>
+              <svg class="step-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <circle cx="24" cy="17" r="6" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M12 37c1.4-7.2 5.5-10.8 12-10.8S34.6 29.8 36 37" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="M38 12v7M34.5 15.5h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Be seen beyond your photos</h3>
+            <p>Your profile becomes a fuller picture of how you think, connect and show up in a relationship.</p>
+          </article>
+
+          <article class="step" data-reveal style="--delay: 200ms">
+            <div class="step-top">
+              <span class="step-number">03</span>
+              <svg class="step-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <path d="M24 39s-12-7.4-12-17.2C12 16.4 15.5 13 20 13c2.4 0 4.1 1.2 4 1.2 0 0 1.7-1.2 4-1.2 4.5 0 8 3.4 8 8.8C36 31.6 24 39 24 39Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Meet your five</h3>
+            <p>Receive a small set of considered introductions, with a clear explanation of why each one may work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <div>
+            <span class="eyebrow">A little more human</span>
+            <h2>Dating should feel like possibility, not admin.</h2>
+          </div>
+
+          <p>
+            The goal is not to keep you scrolling. It is to help you meet someone and eventually leave the app.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <figure class="experience-image" data-reveal="left">
+            <img
+              src="https://images.pexels.com/photos/7156304/pexels-photo-7156304.jpeg?auto=compress&cs=tinysrgb&w=1400"
+              alt="Two people holding hands beside coffee cups"
+              loading="lazy"
+            />
+            <figcaption class="image-caption">Compatibility gives attraction somewhere to go.</figcaption>
+          </figure>
+
+          <div class="experience-stack">
+            <article class="experience-card" data-reveal="right" style="--delay: 80ms">
+              <span class="experience-label">Thoughtful by design</span>
+              <div>
+                <h3>Fewer profiles. Better context.</h3>
+                <p>Every introduction comes with a clear reason to explore the connection.</p>
+              </div>
+            </article>
+
+            <article class="experience-card dark" data-reveal="right" style="--delay: 160ms">
+              <span class="experience-label">Compatibility preview</span>
+              <div>
+                <h3>Know where you align before you say hello.</h3>
+                <div class="mini-ui" aria-hidden="true">
+                  <span>Shared values <i style="width: 78px"></i></span>
+                  <span>Communication <i style="width: 65px"></i></span>
+                  <span>Relationship intent <i style="width: 86px"></i></span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="different">
+      <div class="container difference-grid">
+        <div class="difference-copy" data-reveal="left">
+          <span class="eyebrow">Why SlowBrew</span>
+          <h2>Like a mutual friend who actually knows both of you.</h2>
+          <p>
+            SlowBrew does not try to predict chemistry. It helps you meet people where chemistry has a better chance of becoming something real.
+          </p>
+
+          <div class="pill-list" aria-label="Compatibility signals">
+            <span class="pill">Values</span>
+            <span class="pill">Lifestyle</span>
+            <span class="pill">Communication</span>
+            <span class="pill">Love language</span>
+            <span class="pill">Dating intent</span>
+            <span class="pill">100+ signals</span>
+          </div>
+        </div>
+
+        <div class="compatibility-card" data-reveal="right">
+          <div class="compatibility-top">
+            <small>Compatibility preview</small>
+            <span class="compatibility-badge">Strong match</span>
+          </div>
+
+          <div class="compatibility-score">
+            <strong>91%</strong>
+            <span>strong alignment</span>
+          </div>
+
+          <div class="signal">
+            <div class="signal-row"><span>Shared values</span><span>94%</span></div>
+            <div class="signal-track"><div class="signal-fill" style="--score: 94%"></div></div>
+          </div>
+
+          <div class="signal">
+            <div class="signal-row"><span>Lifestyle fit</span><span>88%</span></div>
+            <div class="signal-track"><div class="signal-fill" style="--score: 88%"></div></div>
+          </div>
+
+          <div class="signal">
+            <div class="signal-row"><span>Relationship intent</span><span>96%</span></div>
+            <div class="signal-track"><div class="signal-fill" style="--score: 96%"></div></div>
+          </div>
+
+          <div class="signal">
+            <div class="signal-row"><span>Communication rhythm</span><span>86%</span></div>
+            <div class="signal-track"><div class="signal-fill" style="--score: 86%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section" id="story">
+      <div class="coffee-stain stain-two" aria-hidden="true">
+        <span class="coffee-ring"></span>
+      </div>
+
+      <div class="container" data-reveal="scale">
+        <p class="quote">
+          “Less marketplace. More <em>I know someone you should meet</em> energy.”
+        </p>
+        <p class="quote-note">Built for people who want intention, clarity and a real connection.</p>
+      </div>
+    </section>
+
+    <section class="cta-section" id="waitlist">
+      <div class="container">
+        <div class="cta-box" data-reveal="scale">
+          <div>
+            <span class="eyebrow" style="color: #e7d1b8">Opening soon</span>
+            <h2>Find someone worth slowing down for.</h2>
+            <p>Join the first 2,000 members and get free early access when SlowBrew opens.</p>
+          </div>
+
+          <div class="waitlist-wrap">
+            <form class="waitlist-form" id="waitlistForm">
+              <label for="email" class="sr-only">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="Your email address"
+                required
+              />
+              <button class="btn" type="submit">
+                Join the waitlist
+                <span class="btn-arrow" aria-hidden="true">→</span>
+              </button>
+            </form>
+
+            <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+            <p class="form-note">No spam. Just one thoughtful email when your invitation is ready.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <a href="#top" class="logo" style="font-size: 1.2rem">
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="1 12 54 38" fill="none"><path d="M26,23 Q21,19 27,16" stroke="#9f5238" stroke-width="2" stroke-linecap="round" opacity="0.6"/><path d="M30,27 Q35,20 27,16" stroke="#b56f49" stroke-width="2" stroke-linecap="round" opacity="0.6"/><rect x="10" y="24" width="18" height="20" rx="7" stroke="#9f5238" stroke-width="2.5"/><path d="M10,29 C4,29 4,39 10,39" stroke="#9f5238" stroke-width="2.5"/><rect x="28" y="28" width="18" height="20" rx="7" stroke="#b56f49" stroke-width="2.5"/><path d="M46,33 C52,33 52,43 46,43" stroke="#b56f49" stroke-width="2.5"/></svg></span>
+        SlowBrew
+      </a>
+
+      <p>© <span id="year"></span> SlowBrew. Dating, brewed slowly.</p>
+
+      <div class="footer-links">
+        <a href="#" aria-label="SlowBrew on Instagram">Instagram</a>
+        <a href="#" aria-label="SlowBrew privacy policy">Privacy</a>
+        <a href="mailto:hello@slowbrew.io">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
+  <script>
+    const revealItems = document.querySelectorAll("[data-reveal]");
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px" }
+    );
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const siteHeader = document.getElementById("siteHeader");
+    const scrollProgress = document.getElementById("scrollProgress");
+    const backToTop = document.getElementById("backToTop");
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = [...navLinks]
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const updateScrollUI = () => {
+      const scrollTop = window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = documentHeight > 0 ? (scrollTop / documentHeight) * 100 : 0;
+
+      siteHeader.classList.toggle("scrolled", scrollTop > 26);
+      backToTop.classList.toggle("visible", scrollTop > 620);
+      scrollProgress.style.width = `${progress}%`;
+
+      let currentSection = "";
+      sections.forEach((section) => {
+        if (scrollTop >= section.offsetTop - 180) currentSection = section.id;
+      });
+
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${currentSection}`);
+      });
+    };
+
+    updateScrollUI();
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+
+    const menuButton = document.querySelector(".mobile-menu");
+    const mobilePanel = document.getElementById("mobilePanel");
+
+    const closeMenu = () => {
+      mobilePanel.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.textContent = "☰";
+    };
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mobilePanel.classList.toggle("open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "×" : "☰";
     });
-    notsObs.disconnect();
-  });
-},{threshold:0.3});
-var hn=document.getElementById('heroNots');
-if(hn)notsObs.observe(hn);
 
-/* fizzle lines, sequential */
-var fzObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('.fizzle-line').forEach(function(el,i){
-      setTimeout(function(){el.classList.add('in');},i*380);
+    mobilePanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
     });
-    fzObs.disconnect();
-  });
-},{threshold:0.3});
-var fz=document.getElementById('fizzle');
-if(fz)fzObs.observe(fz);
 
-/* fit checklist items, sequential per column */
-var fitObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(!e.isIntersecting)return;
-    e.target.querySelectorAll('.fit-item').forEach(function(el,i){
-      setTimeout(function(){el.classList.add('in');},200+i*140);
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeMenu();
     });
-    fitObs.unobserve(e.target);
-  });
-},{threshold:0.3});
-document.querySelectorAll('.fit-col').forEach(function(col){fitObs.observe(col);});
 
-/* ---------- SCROLL PROGRESS BAR ---------- */
-var progress=document.getElementById('scrollProgress');
-window.addEventListener('scroll',function(){
-  var h=document.documentElement;
-  var pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
-  progress.style.width=pct+'%';
-},{passive:true});
-
-/* ---------- PARALLAX ORBS ---------- */
-var parallaxEls=document.querySelectorAll('[data-parallax]');
-var ticking=false;
-window.addEventListener('scroll',function(){
-  if(ticking)return;
-  ticking=true;
-  requestAnimationFrame(function(){
-    var y=window.scrollY;
-    parallaxEls.forEach(function(el){
-      var f=parseFloat(el.getAttribute('data-parallax'));
-      el.style.transform='translateY('+(y*f)+'px)';
+    document.addEventListener("click", (event) => {
+      if (
+        mobilePanel.classList.contains("open") &&
+        !mobilePanel.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        closeMenu();
+      }
     });
-    ticking=false;
-  });
-},{passive:true});
 
-/* ---------- CLICK RIPPLES ---------- */
-document.querySelectorAll('.btn-click,.btn').forEach(function(btn){
-  btn.addEventListener('click',function(ev){
-    var rect=btn.getBoundingClientRect();
-    var r=document.createElement('span');
-    r.className='ripple';
-    var size=Math.max(rect.width,rect.height);
-    r.style.width=r.style.height=size+'px';
-    r.style.left=(ev.clientX-rect.left-size/2)+'px';
-    r.style.top=(ev.clientY-rect.top-size/2)+'px';
-    btn.appendChild(r);
-    setTimeout(function(){r.remove();},600);
-  });
-});
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
-</script>
+    const heroVisual = document.querySelector(".hero-visual");
+    const heroPhotoWrap = document.getElementById("heroPhotoWrap");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (heroVisual && heroPhotoWrap && !reducedMotion && window.innerWidth > 980) {
+      heroVisual.addEventListener("mousemove", (event) => {
+        const rect = heroVisual.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        heroPhotoWrap.style.transform = `rotateY(${x * 3.5}deg) rotateX(${y * -3.5}deg) translate3d(${x * 6}px, ${y * 6}px, 0)`;
+      });
+
+      heroVisual.addEventListener("mouseleave", () => {
+        heroPhotoWrap.style.transform = "rotateY(0deg) rotateX(0deg) translate3d(0, 0, 0)";
+      });
+    }
+
+    const form = document.getElementById("waitlistForm");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const email = String(new FormData(form).get("email") || "").trim();
+
+      if (!email) {
+        formMessage.textContent = "Please enter your email address.";
+        return;
+      }
+
+      // Hand off to the real signup form on early-access.html, which writes to
+      // Supabase. The email travels via sessionStorage rather than a query
+      // string so it never lands in browser history or server logs.
+      try {
+        sessionStorage.setItem("slowbrew_email", email);
+      } catch (err) {
+        /* private mode or storage disabled: the field is simply not prefilled */
+      }
+
+      formMessage.textContent = "Taking you to the signup form.";
+      window.location.href = "early-access.html";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

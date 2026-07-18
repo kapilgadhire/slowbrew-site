@@ -319,6 +319,19 @@ const confirmState = document.getElementById('confirmState');
 const submitBtn = document.getElementById('submitBtn');
 const submitBtnText = document.getElementById('submitBtnText');
 
+// Prefill the email when someone started from the homepage capture box. It is
+// handed over in sessionStorage (never a query string) and cleared on read so
+// it does not persist beyond this signup.
+try {
+  const handoffEmail = sessionStorage.getItem('slowbrew_email');
+  if (handoffEmail) {
+    document.getElementById('fldEmail').value = handoffEmail;
+    sessionStorage.removeItem('slowbrew_email');
+  }
+} catch (err) {
+  /* storage unavailable: the visitor just types their email again */
+}
+
 // The listener must attach synchronously, before any network/import call.
 // If client setup happened first (via a blocking await) a fast click could
 // hit the window where no listener exists yet, and the browser would fall
